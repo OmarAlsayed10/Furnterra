@@ -1,31 +1,45 @@
 <section>
-    <div class="flex flex-row justify-around">
-        <div class="bg-gray-300 w-150">
-            <h4>Flash <span class="text-emerald-400">Sale!</span></h4>
-            <p>Get 25% off - Limited Time Offer!</p>
-            <div class="flex gap-4 text-center">
-                <div class="flex-row">
-                    <h4>04</h4>
-                    <p>days</p>
-                </div>
-                <div class="flex-row">
-                    <h4>13</h4>
-                    <p>Hours</p>
-                </div>
-                <div class="flex-row">
-                    <h4>20</h4>
-                    <p>Minutes</p>
-                </div>
-                <div class="flex-row">
-                    <h4>44</h4>
-                    <p>seconds</p>
-                </div>
+    <div class="flex flex-col md:flex-row justify-center gap-10 items-center">
+        <div class="bg-gray-100 shadow-md w-full sm:w-[90%] md:w-[60%] lg:w-[40%] max-w-[600px] rounded-2xl min-h-[400px] flex items-center justify-center">
+            <div class="flex flex-col items-center gap-5">
+                <h4 class="text-2xl font-bold">Flash <span class="text-emerald-400">Sale!</span></h4>
+                <p class="text-gray-700">Get 25% off - Limited Time Offer!</p>
+                       <div class="flex gap-4">
+          <div class="flex flex-col items-center">
+            <h4 class="text-lg font-bold">04</h4>
+            <p class="text-sm">Days</p>
+          </div>
+          :
+          <div class="flex flex-col items-center">
+            <h4 class="text-lg font-bold">13</h4>
+            <p class="text-sm">Hours</p>
+          </div>
+          :
+          <div class="flex flex-col items-center">
+            <h4 class="text-lg font-bold">20</h4>
+            <p class="text-sm">Minutes</p>
+          </div>
+          :
+          <div class="flex flex-col items-center">
+            <h4 class="text-lg font-bold">44</h4>
+            <p class="text-sm">Seconds</p>
+          </div>
+        </div>
+          <button class="bg-emerald-900 hover:bg-emerald-800 transition text-white rounded px-6 py-2 text-sm font-medium cursor-pointer">
+              Shop Now
+            </button>
             </div>
-            <button class="bg-emerald-900 text-white rounded  p-2">Shop now</button>
             
         </div>
-        <div>
-            ge
+        <div class="hidden md:flex flex-row items-center gap-4">
+           <div class="min-h-[400px] w-[200px] bg-amber-100 relative shadow-md">
+            <div class="border-white border-2 absolute left-0 translate-x-[6%] translate-y-[3%] rounded min-h-[380px] min-w-[180px]"></div>
+            <img src="assets/images/left.png" draggable="false" alt="furniture" class="h-[400px]">
+           </div>
+           <div class="min-h-[400px] w-[200px] bg-amber-100 relative shadow-md">
+            <div class="border-white border-2 absolute left-0 translate-x-[6%] translate-y-[3%] rounded min-h-[380px] min-w-[180px]"></div>
+            <img src="assets/images/right.png" draggable="false" alt="furniture" class="h-[400px]">
+           </div>
         </div>
     </div>
 </section>

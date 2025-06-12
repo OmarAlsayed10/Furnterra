@@ -3,16 +3,16 @@
         <h2 class="text-2xl">Best Selling products</h2>
         <div class="flex text-sm">
             <ul class="flex font-light text-gray-800 gap-5">
-                <li>All</li>
-                <li>Featured</li>
-                <li>Best Seller</li>
-                <li>Sells</li>
+                <li class="cursor-pointer">All</li>
+                <li class="font-semibold underline cursor-pointer">Featured</li>
+                <li class="cursor-pointer">Best Seller</li>
+                <li class="cursor-pointer">Sells</li>
             </ul>
         </div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <div class="w-3/4 p-4 relative mx-auto">
-                <img src="assets/images/clock.png" alt="clock" class="w-full bg-gray-200 rounded p-5"/>
+            <div class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
+                <img src="assets/images/clock.png" draggable="false" alt="clock" class="w-full bg-gray-200 rounded p-5"/>
             <div class="flex justify-between">
                 <p class="first-letter:uppercase font-light">accessories</p>
                 <i>Heart</i>
@@ -21,5 +21,5 @@
             <p>$29</p>
             </div>
         </div>
-        <p class="text-center uppercase">See all products</p>
+        <p class="text-center uppercase hover:underline cursor-pointer my-4">See all products</p>
 </section>
