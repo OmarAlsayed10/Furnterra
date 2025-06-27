@@ -1,0 +1,89 @@
+<main class="min-h-screen flex items-center p-4 justify-center">
+    <section class="w-full max-w-md shadow rounded p-6">
+        <h2 class="text-center font-bold text-2xl">Sign up</h2>
+        <form [formGroup]="registerForm"(ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <label for="name">First name</label>
+                <input type="text" formControlName="firstName" class="w-full border rounded p-2">
+                @if(registerForm.touched && registerForm.get('firstName')?.invalid){
+                    <p class="text-red-500 text-sm">
+                        @if(registerForm.get('firstName')?.errors?.['firstName']){
+                            Please enter your first name
+                        }
+
+                        @if(registerForm.get('firstName')?.errors?.['required']){
+                            firstName is required
+                        }
+                    </p>
+                }
+            </div>
+            <div class="mb-4">
+                <label for="name">Last name</label>
+                <input type="text" formControlName="lastName" class="w-full border rounded p-2">
+                @if(registerForm.touched && registerForm.get('lastName')?.invalid){
+                    <p class="text-red-500 text-sm">
+                        @if(registerForm.get('lastName')?.errors?.['lastName']){
+                            Please enter your last name
+                        }
+
+                        @if(registerForm.get('firstName')?.errors?.['required']){
+                            lastName is required
+                        }
+                    </p>
+                }
+            </div>
+            <div class="mb-4">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" class="w-full border rounded p-2">
+                @if(registerForm.touched && registerForm.get('email')?.invalid){
+                    <p class="text-red-500 text-sm">
+                        @if(registerForm.get('email')?.errors?.['email']){
+                            Please enter a valid email
+                        }
+
+                        @if(registerForm.get('email')?.errors?.['required']){
+                            Email is required
+                        }
+                    </p>
+                }
+            </div>
+            <div class="mb-4">
+                <label for="password">password</label>
+                <input type="password" formControlName="password" class="w-full border rounded p-2">
+                @if(registerForm.touched && registerForm.get('password')?.invalid){
+                    <p class="text-red-500 text-sm">
+                        @if(registerForm.get('password')?.errors?.['required']){
+                            Password is required
+                        }
+
+                        @if(registerForm.get('password')?.errors?.['minlength']){
+                            password must be atleast 8 characters
+                        }
+
+                        @if(registerForm.get('password')?.errors?.['pattern']){
+                                   Password must contain:
+                        <ul class="space-y-1">
+                            <li>uppercase</li>
+                            <li>lowercase</li>
+                            <li>special character</li>
+                            <li>number</li>
+                        </ul>
+                        }
+                    </p>
+                }
+            </div>
+              <button type="submit" class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer">
+            sign up
+        </button>
+        <div class="my-4 text-center text-gray-500 text-sm">OR</div>
+        <button class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer" >
+            Login with Google
+        </button>
+    </form>
+    <p class="text-center mt-4 text-gray-500">Already have an account? <a class="text-emerald-800 underline" [routerLink]="'/login'">Login</a> </p>
+
+</section>
+  <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+  <app-alert></app-alert>
+</div>
+</main>

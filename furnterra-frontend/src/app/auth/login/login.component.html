@@ -1,0 +1,47 @@
+<div class="min-h-screen flex items-center justify-center p-4">
+  <div class="w-full max-w-md shadow rounded p-6">
+    <h2 class="text-center font-bold text-2xl">Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <div class="mb-4">
+            <label>Email</label>
+            <input type="email" formControlName="email" class="w-full border p-2 rounded"/>
+            @if(loginForm.touched && loginForm.get('email')?.invalid){
+                <p class="text-red-500 text-sm">
+                    @if(loginForm.get('email')?.errors?.['required']){
+                        Email is Required
+                    }
+                    
+                    @if(loginForm.get('email')?.errors?.["email"]){     
+                        Please Enter a Valid Email
+                    }
+                </p>
+            }
+        </div>
+        <div class="mb-4">
+            <label>Password</label>
+            <input type="password" formControlName="password" class="w-full border p-2 rounded focus:outline-none "/>
+            @if(loginForm.touched && loginForm.get('password')?.invalid){
+                <p class="text-red-500 text-sm">
+                    @if(loginForm.get('password')?.errors?.['required']){
+                        password is required
+                    }
+                </p>
+            }       
+        </div>
+
+        <button type="submit" class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer">
+            Login
+        </button>
+        <div class="my-4 text-center text-gray-500 text-sm">OR</div>
+        <button (click)="googleSubmit()" class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer" >
+            Login with Google
+        </button>
+    </form>
+    <p class="text-center mt-4 text-gray-500">don't have an account? <a class="text-emerald-800 underline" [routerLink]="'/register'">Sign up</a> </p>
+    <p class="text-center text-emerald-800 cursor-pointer" [routerLink]="'/'">forgot password?</p>    
+    <div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+    <app-alert></app-alert>
+  </div>
+  </div>
+</div>

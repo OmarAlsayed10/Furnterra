@@ -1,0 +1,11 @@
+<div *ngIf="alert$ | async as message">
+  <div
+    class="p-2 rounded font-medium"
+    [ngClass]="{
+      'bg-green-200 text-green-800': message.type === 'success',
+      'bg-red-200 text-red-800': message.type === 'error'
+    }"
+  >
+    {{ message.message }}
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="min-h-screen flex items-center justify-center p-4 text-center">
+    <div class="w-full max-w-md shadow rounded p-6">
+        <h2 class="font-bold text-2xl">OTP Sent</h2>
+
+        @if(email){
+            <p class="text-sm text-gray-400">please check your email</p>
+        }
+        
+        <form [formGroup]="otpForm" (ngSubmit)="verifyOtp()">
+            <div class="flex gap-2 justify-center items-center mb-4">
+                @for (control of controls; track $index){
+                    <input
+                    type="text"
+                    maxlength="1"
+                    class="text-center border rounded w-8 h-8 md:w-12 md:h-12 lg:w-15 lg:h-15"
+                    [formControlName]="control"
+                    (input)="handleInput($event,$index)"
+                    #otpinput
+                    >
+                }
+            </div>
+            <button class=" px-5 py-1 rounded text-white bg-emerald-800 cursor-pointer" type="submit">Verify OTP</button>
+        </form>
+
+        <p class="text-sm underline mt-2 cursor-pointer" (click)="resendOtp()" >resend otp</p>
+    </div>
+
+</div>
+
+<div class="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50">
+  <app-alert></app-alert>
+</div>
