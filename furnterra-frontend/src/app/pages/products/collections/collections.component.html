@@ -1,1 +1,72 @@
-<p>collections works!</p>
+<div class="bg-white shadow-sm border-b mb-8">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+    <nav class="flex items-center space-x-2 text-sm text-gray-600">
+      <a [routerLink]="['/']" class="hover:text-amber-600 transition-colors">Home</a>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+      <a [routerLink]="['/products']" class="hover:text-amber-600 transition-colors">products</a>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+      </svg>
+      <span class="text-gray-800 font-medium capitalize">{{ currentCollectionName }} </span>
+    </nav>
+  </div>
+</div>
+
+<main class="p-4 sm:p-6 lg:p-8">
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+    <h2 class="text-2xl font-bold capitalize">{{ currentCollectionName }} Collection</h2>
+    <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      <div class="relative w-full sm:w-[250px]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#99a1af"
+          class="absolute right-2 top-1/2 -translate-y-1/2" stroke-width="1" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+        <input type="text" [(ngModel)]="searchTerm" placeholder="Search products..."
+          class="w-full px-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
+      </div>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <a [routerLink]="['/product',product._id]" *ngFor="let product of filteredProducts()" class="border p-4 rounded-2xl hover:-translate-y-2 transition-all duration-200 ease-in-out hover:shadow hover:shadow-yellow-600 hover:border-yellow-600">
+      <picture *ngIf="product.images && product.images.length > 0">
+        <source [srcset]="product.images[0]" type="image/webp" />
+        <img [src]="product.images[0]" loading="lazy" draggable="false"
+          class="w-full rounded-lg object-cover" />
+      </picture>
+
+      <div class="flex gap-2 mt-2 mb-3">
+        <span class="w-4 h-4 rounded-full bg-blue-400"></span>
+        <span class="w-4 h-4 rounded-full bg-orange-400"></span>
+        <span class="w-4 h-4 rounded-full bg-red-400"></span>
+        <span class="w-4 h-4 rounded-full bg-gray-400"></span>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <h2 class="font-medium text-lg truncate">{{ product.name }}</h2>
+        <p class="font-semibold text-sm">${{ product.price }}</p>
+
+        <div class="grid grid-cols-3 gap-2 text-sm mt-2">
+          <div>
+            <p class="text-gray-600">Stock</p>
+            <p class="font-semibold">{{ product.stock }}</p>
+          </div>
+          <div>
+            <p class="text-gray-600">Sold</p>
+            <p class="font-semibold">{{ product.sold }}</p>
+          </div>
+          <div>
+            <p class="text-gray-600">Status</p>
+            <p [ngClass]="product.inStock ? 'text-green-600' : 'text-red-600'">
+              {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+            </p>
+          </div>
+        </div>
+      </div>
+    </a>
+  </div>
+</main>

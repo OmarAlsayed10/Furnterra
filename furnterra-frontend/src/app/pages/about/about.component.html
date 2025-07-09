@@ -1,1 +1,156 @@
-<p>about works!</p>
+<div class="bg-gradient-to-r from-yellow-600 to-[#805000] text-white py-16">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">About Furnterra</h1>
+      <p class="text-xl md:text-2xl font-light opacity-90">
+        Crafting exceptional furniture that transforms your house into a home
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Our Story</h2>
+          <p class="text-lg text-gray-600 mb-4">
+            Founded in 2018, Furnterra began as a passion project to bring handcrafted, quality furniture to homes across the country. We believe that furniture is more than just functional pieces – it's about creating spaces that reflect your personality and enhance your daily life.
+          </p>
+          <p class="text-lg text-gray-600 mb-4">
+            From our humble beginnings in a small workshop to becoming a trusted name in home furnishing, we've maintained our commitment to exceptional craftsmanship, sustainable practices, and customer satisfaction.
+          </p>
+          <p class="text-lg text-gray-600">
+            Today, we're proud to serve thousands of customers who trust us to help them create beautiful, comfortable living spaces that truly feel like home.
+          </p>
+        </div>
+        <div class="relative">
+          <img 
+            src="assets/images/workshop.webp" 
+            alt="Our Workshop" 
+            class="w-full h-96 object-cover rounded-lg shadow-lg"
+          />
+          <div class="absolute inset-0 bg-orange-500 opacity-10 rounded-lg"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Values</h2>
+        <p class="text-lg text-gray-600">The principles that guide everything we do</p>
+      </div>
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div *ngFor="let value of values" class="bg-white rounded-lg p-6 shadow-md hover:shadow-lg transition-shadow duration-300">
+          <div class="text-4xl mb-4">{{ value.icon }}</div>
+          <h3 class="text-xl font-semibold text-gray-800 mb-3">{{ value.title }}</h3>
+          <p class="text-gray-600">{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Journey</h2>
+        <p class="text-lg text-gray-600">Key milestones in our growth and development</p>
+      </div>
+      <div class="relative">
+        <div class="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-orange-200 hidden md:block"></div>
+        
+        <div class="space-y-8">
+          <div *ngFor="let milestone of milestones; let i = index" 
+               class="relative flex items-center"
+               [class.md:flex-row-reverse]="i % 2 === 1"
+               [class.md:flex-row]="i % 2 === 0">
+
+            <div class="w-full md:w-1/2 bg-white rounded-lg shadow-md p-6 mx-4 md:mx-8 hover:shadow-lg transition-shadow duration-300">
+              <div class="flex items-center mb-3">
+                <span class="bg-yellow-600 text-white px-3 py-1 rounded-full text-sm font-semibold">{{ milestone.year }}</span>
+              </div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-2">{{ milestone.title }}</h3>
+              <p class="text-gray-600">{{ milestone.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Meet Our Team</h2>
+        <p class="text-lg text-gray-600">The passionate people behind Furnterra</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div *ngFor="let member of teamMembers" class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+          <img 
+            [src]="member.image" 
+            [alt]="member.name" 
+            class="w-full h-64 object-cover"
+          />
+          <div class="p-6">
+            <h3 class="text-xl font-semibold text-gray-800 mb-1">{{ member.name }}</h3>
+            <p class="text-yellow-600 font-medium mb-3">{{ member.position }}</p>
+            <p class="text-gray-600">{{ member.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-yellow-600 text-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-6xl mx-auto">
+      <div class="grid md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-4xl font-bold mb-2">50K+</div>
+          <div class="text-lg opacity-90">Happy Customers</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">1000+</div>
+          <div class="text-lg opacity-90">Products</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">6</div>
+          <div class="text-lg opacity-90">Years Experience</div>
+        </div>
+        <div>
+          <div class="text-4xl font-bold mb-2">100%</div>
+          <div class="text-lg opacity-90">Satisfaction Rate</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="py-16 bg-white">
+  <div class="container mx-auto px-4">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-6">Ready to Transform Your Home?</h2>
+      <p class="text-lg text-gray-600 mb-8">
+        Discover our collection of handcrafted furniture and find the perfect pieces to make your house feel like home.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <button class="bg-yellow-600 hover:bg-yellow-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
+          Shop Now
+        </button>
+        <button class="border border-yellow-600 text-yellow-600 hover:bg-yellow-700 hover:text-white font-semibold py-3 px-8 rounded-lg transition-colors duration-300">
+          Contact Us
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

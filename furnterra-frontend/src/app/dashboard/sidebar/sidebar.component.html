@@ -1,0 +1,55 @@
+  <aside class="flex flex-col h-screen justify-between w-fit bg-gray-100 shadow-md py-3 rounded-r-2xl">
+    <ul class="flex flex-col gap-6 items-center">
+      <a class="font-black text-yellow-600 focus:outline-none px-3" [routerLink]="'/'">
+        Furn
+      </a>
+      @for(icon of mainIcons; track icon.name; let i = $index){
+        <li class="relative rounded-lg h-[24px] flex justify-center items-center py-5 px-2" [ngClass]="{
+          'bg-[#F6E2C2]': activeIndex.section === 'main' && activeIndex.index === i,
+          'transition-all ease-in-out duration-200': true,
+          'p-2': true
+        }">
+        <div [ngClass]="{
+          'w-[5px] h-[24px] py-4 bg-[#E9A33C] rounded absolute -left-3':activeIndex.section === 'main' && activeIndex.index === i,
+          'transition-all ease-in-out duration-200':true,
+
+        }"></div>
+        <button class="focus:outline-none cursor-pointer" (click)="iconActive('main',i)">
+          <span [innerHTML]='icon.svg'></span>
+        </button>
+      </li>
+      }
+
+
+    </ul>
+    <ul class="flex flex-col gap-2 items-center">
+    
+      @for(setIcons of settingsIcons; track setIcons.name; let i = $index){
+        <li class="relative rounded-lg h-[24px] flex justify-center items-center py-5 px-2"
+        [ngClass]="{
+          'bg-[#F6E2C2]': activeIndex.section === 'settings' && activeIndex.index === i,
+          'transition-all ease-in-out duration-200': true,
+          'p-2': true
+        }">
+        <div [ngClass]="{
+          'w-[5px] h-[24px] py-4 bg-[#E9A33C] rounded absolute -left-3':activeIndex.section === 'settings' && activeIndex.index === i,
+          'transition-all ease-in-out duration-200':true,
+
+        }"></div>
+        <button class="focus:outline-none cursor-pointer" (click)="iconActive('settings',i)">
+          <span [innerHTML]='setIcons.svg'></span>
+        </button>
+      </li>
+      }
+      <li (click)="logoutAdmin()">
+        <button class="cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2" />
+              <path d="M9 12h12l-3 -3" />
+              <path d="M18 15l3 -3" />
+            </svg>
+        </button>
+      </li>
+    </ul>
+  </aside>

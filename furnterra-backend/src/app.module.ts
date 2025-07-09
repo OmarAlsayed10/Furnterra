@@ -7,6 +7,9 @@ import { AuthModule } from './modules/auth/auth.module';
 import { ProductsModule } from './modules/products/products.module';
 import { AdminModule } from './modules/admin/admin.module';
 import { PendingUserModule } from './modules/auth/pending-user/pending-user.module';
+import { BlogsService } from './modules/blogs/blogs.service';
+import { BlogsController } from './modules/blogs/blogs.controller';
+import { BlogsModule } from './modules/blogs/blogs.module';
 
 
 
@@ -26,7 +29,8 @@ import { PendingUserModule } from './modules/auth/pending-user/pending-user.modu
     AuthModule,
     ProductsModule,
     AdminModule,
-    PendingUserModule
+    PendingUserModule,
+    BlogsModule
   ],
   controllers: [],
   providers: [],

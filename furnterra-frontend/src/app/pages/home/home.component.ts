@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { HeroComponent } from "../../components/hero/hero.component";
-import { ProductsComponent } from '../../components/products/products.component';
-import { BestSellingComponent } from "../../components/best-selling/best-selling.component";
-import { SaleComponent } from "../../components/sale/sale.component";
-import { BlogsComponent } from "../../components/blogs/blogs.component";
+import { HeroComponent } from "../../shared/components/hero/hero.component";
+import { ProductsComponent } from '../../shared/components/products/products.component';
+import { BestSellingComponent } from "../../shared/components/best-selling/best-selling.component";
+import { SaleComponent } from "../../shared/components/sale/sale.component";
+import { BlogsComponent } from "../../shared/components/blogs/blogs.component";
 
 
 @Component({

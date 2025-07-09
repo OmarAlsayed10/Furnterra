@@ -2,14 +2,13 @@ import { AfterViewInit, Component, ElementRef, QueryList, ViewChildren } from '@
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-import { AlertsService } from '../../components/alert/alerts.service';
+import { AlertsService } from '../../shared/components/alert/alerts.service';
 import { CommonModule } from '@angular/common';
-import { AlertComponent } from "../../components/alert/alert.component";
 
 @Component({
   selector: 'app-otp',
   standalone:true,
-  imports: [ReactiveFormsModule, CommonModule, AlertComponent],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './otp.component.html',
 })
 export class OTPComponent implements AfterViewInit {

@@ -1,32 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Product, productDocument } from './products.schema';
+import { Product, ProductDocument } from './products.schema';
 import { Model } from 'mongoose';
 import { ProductDto } from './dto/product.dto';
 
 @Injectable()
 export class ProductsService {
     
-    constructor( @InjectModel(Product.name) private ProductModel:Model<productDocument>){}
+    constructor( @InjectModel(Product.name) private ProductModel:Model<ProductDocument>){}
     
-    createProduct(dto:ProductDto){
-        this.ProductModel.create(dto)
+    async createProduct(dto:ProductDto){
+        return await this.ProductModel.create(dto)
     }
 
-    updateProduct(id:string,dto:ProductDto){
-        this.ProductModel.findByIdAndUpdate(id,dto,{new:true})
+    async updateProduct(id:string,dto:ProductDto){
+       return await this.ProductModel.findByIdAndUpdate(id,dto,{new:true})
     }
 
-    findAll(){
-        this.ProductModel.find()
+    async findAll(){
+       return await this.ProductModel.find()
     }
 
-    deleteProduct(id:string){
-        this.ProductModel.findByIdAndDelete(id)
+    async deleteProduct(id:string){
+       return await this.ProductModel.findByIdAndDelete(id)
     }
 
-    findOne(id:string){
-        this.ProductModel.findById(id)
+    async findOne(id:string){
+        return await this.ProductModel.findById(id)
+    }
+
+    async findByCategory(category:string){
+        return await this.ProductModel.find({category:category.toLowerCase()})
     }
 
 }

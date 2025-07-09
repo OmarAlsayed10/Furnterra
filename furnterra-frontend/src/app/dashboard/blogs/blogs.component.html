@@ -1,0 +1,107 @@
+<main class="p-4 sm:p-6 lg:p-8">
+  <!-- Top header and controls -->
+  <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+    <h2 class="text-2xl font-bold">Blogs</h2>
+
+    <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+      <!-- Search box -->
+      <div class="relative w-full sm:w-[250px]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#99a1af"
+          class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" stroke-width="1" stroke-linecap="round"
+          stroke-linejoin="round">
+          <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+          <path d="M21 21l-6 -6" />
+        </svg>
+        <input type="text" placeholder="Search blogs..."
+          class="w-full px-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
+      </div>
+
+      <!-- Add Button -->
+      <button [routerLink]="'/dashboard/addblogs'"
+        class="font-normal px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 cursor-pointer">
+        Add Blogs +
+      </button>
+    </div>
+  </div>
+
+  <!-- Blog grid -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
+    <article *ngFor="let blog of allBlogs"
+      class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden relative">
+      <div class="relative h-60">
+        <picture>
+          <source srcset="assets/images/left.webp" type="image/webp" />
+          <source srcset="assets/images/left.png" type="image/png" />
+          <img src="assets/images/left.png" alt="Blog-Image" loading="lazy" draggable="false"
+            class="mx-auto w-full h-full object-cover" />
+        </picture>
+        <div
+          class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-yellow-600 text-white text-xs px-3 py-1 rounded">
+          {{blog.date|longDate}}
+        </div>
+      </div>
+
+      <div class="p-5 space-y-2">
+        <h3 class="font-semibold text-lg">{{blog.name}}</h3>
+        <p class="text-sm text-gray-600 line-clamp-3">{{blog.content}}</p>
+        <div class="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0 mt-4">
+          <button class="text-white bg-yellow-600 py-1 px-4 rounded text-sm cursor-pointer"
+            (click)="openSidebar(blog)">edit</button>
+          <button class="text-white bg-red-800 py-1 px-4 rounded text-sm cursor-pointer">delete</button>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- Backdrop -->
+  <div *ngIf="selectedBlog" (click)="closeSidebar()" class="fixed inset-0 bg-black/20 z-30"></div>
+
+  <!-- Sidebar -->
+  <div *ngIf="selectedBlog"
+    class="fixed w-full sm:w-[350px] bg-[#fff9e6] h-full top-0 right-0 p-5 z-40 transition-all duration-300">
+    <div class="relative h-full flex flex-col">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">Edit Blog</h2>
+        <p class="font-light underline tracking-wider cursor-pointer">full view</p>
+      </div>
+
+      <div class="mt-5">
+        <img [src]="selectedBlog.image" alt="Blog Image" class="w-full h-40 object-cover rounded" />
+      </div>
+
+      <form [formGroup]="editForm" (ngSubmit)="updateBlog()" class="flex flex-col flex-grow justify-between">
+        <div class="space-y-4 border border-gray-500 rounded p-4 mt-5">
+          <div>
+            <label>Blog Title</label>
+            <input formControlName="name" type="text"
+              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
+          </div>
+
+          <div>
+            <label>Publish Date</label>
+            <input formControlName="date" type="date"
+              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
+          </div>
+
+          <div>
+            <label>Image URL</label>
+            <input formControlName="image" type="text"
+              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
+          </div>
+
+          <div>
+            <label>Content</label>
+            <textarea formControlName="content" rows="5"
+              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 resize-none focus:outline-none"></textarea>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-5">
+          <button type="submit" class="py-2 px-4 rounded bg-yellow-500 text-white hover:bg-yellow-400">Update</button>
+          <button type="button" (click)="closeSidebar()"
+            class="py-2 px-4 rounded bg-red-800 text-white hover:bg-red-700">Discard</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>

@@ -2,13 +2,12 @@ import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 import { ReactiveFormsModule,FormBuilder,FormGroup,Validators} from '@angular/forms';
-import { AlertsService } from '../../components/alert/alerts.service';
-import { AlertComponent } from "../../components/alert/alert.component";
+import { AlertsService } from '../../shared/components/alert/alerts.service';
 
 
 @Component({
   selector: 'app-register',
-  imports: [RouterModule, ReactiveFormsModule, AlertComponent],
+  imports: [RouterModule, ReactiveFormsModule],
   templateUrl: './register.component.html',
 })
 export class RegisterComponent {

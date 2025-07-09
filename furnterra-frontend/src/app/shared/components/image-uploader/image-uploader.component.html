@@ -1,0 +1,9 @@
+<input type="file" (change)="onFileSelect($event)" multiple class="mb-3"/>
+<div class="flex flex-wrap gap-3">
+    <div *ngFor="let image of uploadImages; let i = index" class="relative">
+        <img [src]="image" class="w-full"
+        
+        />
+    </div>
+</div>
+

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { StorageService } from '../components/storage/storage.service';
+import { StorageService } from '../shared/storage/storage.service';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -17,6 +17,7 @@ export class AuthService {
 
   private currentUserSubject = new BehaviorSubject<any>(null)
   currentUser$ = this.currentUserSubject.asObservable()
+  authReady = new BehaviorSubject(false)
 
   login(data:{email:string; password:string,firstName:string,lastName:string}){
     return this.http.post<{access_token:string,user:{firstName:string,lastName:string,email:string,role:string}}>(`${this.API}/login`,data);
@@ -32,8 +33,9 @@ export class AuthService {
     if(stored){
       const parsed = JSON.parse(stored)
       this.currentUserSubject.next(parsed)
+      return parsed
     }
-    return null
+    this.authReady.next(true)
   }
 
   register(data:{email:string;password:string,firstName:string,lastName:string}){
