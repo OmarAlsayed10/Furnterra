@@ -2,7 +2,7 @@ import { createRequire } from 'module';const require = createRequire(import.meta
 import {
   __spreadProps,
   __spreadValues
-} from "./chunk-YHCV7DAQ.js";
+} from "./chunk-ANGF2IQY.js";
 
 // node_modules/browser-image-compression/dist/browser-image-compression.mjs
 function _mergeNamespaces(e2, t2) {

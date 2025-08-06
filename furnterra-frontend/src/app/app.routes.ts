@@ -1,6 +1,9 @@
 import { Routes } from '@angular/router';
 import { AdminGuard } from './shared/guards/admin.guard.ts.js';
 import { publicGuard } from './shared/guards/public.guard.js';
+import { AuthGuard } from './shared/guards/auth.guard.js';
+import { formDeactivateGuard } from './shared/guards/form-deactivate.guard.js';
+import { CartGuard} from './shared/guards/cart.guard.js';
 
 export const routes: Routes = [
   {
@@ -37,7 +40,7 @@ export const routes: Routes = [
   {
     path:'product/:id',
     loadComponent:()=>
-      import('./shared/components/product-details/product-details.component').then(m=>m.ProductDetailsComponent)
+      import('./pages/products/product-details/product-details.component.js').then(m=>m.ProductDetailsComponent)
   },
 
   {
@@ -64,6 +67,28 @@ export const routes: Routes = [
     path: 'blogs',
     loadComponent: () =>
       import('./pages/blogs/blogs.component').then((m) => m.BlogsComponent),
+  },
+  {
+    path: 'blogs/:id',
+    loadComponent: () =>
+      import('./pages/blogs/blogsdetails/blogsdetails.component').then((m) => m.BlogsdetailsComponent),
+  },
+
+  {
+    path: 'contactus',
+    loadComponent: () =>
+      import('./pages/contact/contact.component').then((m) => m.ContactComponent),
+  },
+  {
+    path:'checkout',
+    canActivate:[AuthGuard],
+    children:[
+      {path:'address',loadComponent:()=>import('./pages/checkout/address/address.component').then((m)=>m.AddressComponent),canDeactivate:[formDeactivateGuard],canActivate:[CartGuard]},
+      {path:'payment',loadComponent:()=>import('./pages/checkout/payment/payment.component').then((m)=>m.PaymentComponent),canDeactivate:[formDeactivateGuard],canActivate:[CartGuard]},
+      {path:'showorder',loadComponent:()=>import('./pages/checkout/showorder/showorder.component').then((m)=>m.ShoworderComponent),canActivate:[CartGuard]},
+      {path:'',pathMatch:'full',redirectTo:'address'}
+    ],
+
   },
 
   {

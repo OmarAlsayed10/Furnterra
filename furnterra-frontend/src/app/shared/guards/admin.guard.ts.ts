@@ -13,6 +13,9 @@ export class AdminGuard implements CanActivate{
     if(user?.role==='admin'){
       return true
     }
+    else if(user?.role ==='owner'){
+      return true
+    }
     this.alert.show("you do not have permission for that",'error')
     this.router.navigateByUrl('/')
     

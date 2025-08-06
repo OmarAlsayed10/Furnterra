@@ -8,8 +8,5 @@ export class BlogDto{
     content:string
 
     @IsString()
-    date:Date
-
-    @IsString()
     image:string
 }

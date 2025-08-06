@@ -33,8 +33,11 @@ export class User{
     @Prop({type:Date,default:null})
     otpExpiresAt:Date|null;
 
-    @Prop({default:"user",enum:["user","admin"]})
-    role:"user" | "admin";
+    @Prop({default:"user",enum:["user","admin","owner"]})
+    role:"user" | "admin"|"owner";
+
+    @Prop({default:[],type:[String]})
+    permissions:string[]
 }
 
 export const UserSchema = SchemaFactory.createForClass(User)

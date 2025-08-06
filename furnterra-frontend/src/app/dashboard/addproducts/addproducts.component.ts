@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ProductsService } from '../../products/products.service';
+import { ProductsService } from '../../services/products/products.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertsService } from '../../shared/components/alert/alerts.service';
 import { ImageUploaderComponent } from "../../shared/components/image-uploader/image-uploader.component";
@@ -47,6 +47,8 @@ export class AddproductsComponent implements OnInit {
     this.uploadImages=urls
     this.form.patchValue({image:this.uploadImages})
   }
+
+  
 
   onSubmit(){
         if(this.form.invalid){

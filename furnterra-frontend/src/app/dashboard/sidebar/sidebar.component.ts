@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
-import { StorageService } from '../../shared/storage/storage.service';
+import { StorageService } from '../../services/storage/storage.service';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { filter } from 'rxjs';
 import { AuthService } from '../../auth/auth.service';

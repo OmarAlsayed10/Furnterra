@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { AlertsService } from '../alert/alerts.service';
@@ -13,6 +13,7 @@ import imageCompression from 'browser-image-compression';
   styles: ``
 })
 export class ImageUploaderComponent {
+  @Input() uploadType:'products'|'blogs'|'users' = 'products'
   @Output() imagesChanged = new EventEmitter<string[]>();
   uploadImages:string[]=[]
 
@@ -44,7 +45,7 @@ export class ImageUploaderComponent {
       formData.append('image',compressedImage,file.name)
 
       uploads.push(
-        this.http.post<{imageUrl:string}>(`${this.API}/products/upload`,formData)
+        this.http.post<{imageUrl:string}>(`${this.API}/upload/${this.uploadType}`,formData)
         .toPromise()
         .then((res:any)=>{
           const url = `${this.API}${res.imageUrl.startsWith('/') ? '' : '/'}${res.imageUrl.replace('./', '')}`;
@@ -60,7 +61,7 @@ export class ImageUploaderComponent {
   }
 
   removeImage(index:number){
-    this.uploadImages.slice(index,1)
+    this.uploadImages.splice(index,1)
     this.imagesChanged.emit(this.uploadImages)
   }
 }

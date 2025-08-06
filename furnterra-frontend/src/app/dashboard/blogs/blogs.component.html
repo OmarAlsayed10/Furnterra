@@ -1,10 +1,9 @@
 <main class="p-4 sm:p-6 lg:p-8">
-  <!-- Top header and controls -->
   <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
     <h2 class="text-2xl font-bold">Blogs</h2>
 
     <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-      <!-- Search box -->
+
       <div class="relative w-full sm:w-[250px]">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#99a1af"
           class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" stroke-width="1" stroke-linecap="round"
@@ -16,7 +15,6 @@
           class="w-full px-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
       </div>
 
-      <!-- Add Button -->
       <button [routerLink]="'/dashboard/addblogs'"
         class="font-normal px-4 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 cursor-pointer">
         Add Blogs +
@@ -24,39 +22,34 @@
     </div>
   </div>
 
-  <!-- Blog grid -->
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 mt-10">
     <article *ngFor="let blog of allBlogs"
       class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden relative">
       <div class="relative h-60">
         <picture>
-          <source srcset="assets/images/left.webp" type="image/webp" />
-          <source srcset="assets/images/left.png" type="image/png" />
-          <img src="assets/images/left.png" alt="Blog-Image" loading="lazy" draggable="false"
+          <img [src]="blog.image"  alt="Blog-Image" loading="lazy" draggable="false"
             class="mx-auto w-full h-full object-cover" />
         </picture>
         <div
           class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-yellow-600 text-white text-xs px-3 py-1 rounded">
-          {{blog.date|longDate}}
+          {{blog.createdAt|longDate}}
         </div>
       </div>
 
       <div class="p-5 space-y-2">
         <h3 class="font-semibold text-lg">{{blog.name}}</h3>
-        <p class="text-sm text-gray-600 line-clamp-3">{{blog.content}}</p>
+        <p [innerHTML]="blog.content" class="text-sm text-gray-600 line-clamp-3 "></p>
         <div class="flex flex-col sm:flex-row justify-between gap-2 sm:gap-0 mt-4">
           <button class="text-white bg-yellow-600 py-1 px-4 rounded text-sm cursor-pointer"
             (click)="openSidebar(blog)">edit</button>
-          <button class="text-white bg-red-800 py-1 px-4 rounded text-sm cursor-pointer">delete</button>
+          <button (click)="deleteBlog(blog._id)" class="text-white bg-red-800 py-1 px-4 rounded text-sm cursor-pointer">delete</button>
         </div>
       </div>
     </article>
   </div>
 
-  <!-- Backdrop -->
   <div *ngIf="selectedBlog" (click)="closeSidebar()" class="fixed inset-0 bg-black/20 z-30"></div>
 
-  <!-- Sidebar -->
   <div *ngIf="selectedBlog"
     class="fixed w-full sm:w-[350px] bg-[#fff9e6] h-full top-0 right-0 p-5 z-40 transition-all duration-300">
     <div class="relative h-full flex flex-col">
@@ -74,20 +67,14 @@
           <div>
             <label>Blog Title</label>
             <input formControlName="name" type="text"
-              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
-          </div>
-
-          <div>
-            <label>Publish Date</label>
-            <input formControlName="date" type="date"
-              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
+            class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
           </div>
 
           <div>
             <label>Image URL</label>
-            <input formControlName="image" type="text"
-              class="border p-2 w-full border-gray-500 rounded-2xl mt-1 focus:outline-none" />
-          </div>
+             <input type="file" accept="image/*" formControlName="image[0]"
+             class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-yellow-500 file:text-white hover:file:bg-yellow-600" />
+            </div>
 
           <div>
             <label>Content</label>

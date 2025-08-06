@@ -21,8 +21,8 @@
             <ul class="space-y-3">
               <li><a [routerLink]="'/'" class="hover:underline text-gray-800 text-base">Home</a></li>
               <li><a [routerLink]="'/products'" class="hover:underline text-gray-800 text-base">Products</a></li>
-              <li><a [routerLink]="'/about'" class="hover:underline text-gray-800 text-base">about</a></li>
               <li><a [routerLink]="'/blogs'" class="hover:underline text-gray-800 text-base">blogs</a></li>
+              <li><a [routerLink]="'/about'" class="hover:underline text-gray-800 text-base">about</a></li>
       
             </ul>
             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#000000"
@@ -50,7 +50,22 @@
   <div class="gap-2 items-center flex">
     <app-favorite></app-favorite>
     <div>
+      <svg (click)="toggleFavoriteMenu()"  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
+        class="cursor-pointer focus:outline-none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+      </svg>
+    </div>
+    <div>
       <app-cart></app-cart>
+        <svg (click)="toggleCartMenu()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
+        class="cursor-pointer focus:outline-none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+        <path d="M17 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
+        <path d="M17 17h-11v-14h-2" />
+        <path d="M6 5l14 1l-1 7h-13" />
+      </svg>
+
+    
     </div>
 
     @if(auth.isAuth()){
@@ -115,10 +130,10 @@
       <a [routerLink]="'/products'" class="hover:underline">Products</a>
     </li>
     <li>
-      <a [routerLink]="'/about'" class="hover:underline">About</a>
+      <a [routerLink]="'/blogs'" class="hover:underline">Blogs</a>
     </li>
     <li>
-      <a [routerLink]="'/blogs'" class="hover:underline">Blogs</a>
+      <a [routerLink]="'/about'" class="hover:underline">About</a>
     </li>
   </ul>
   <hr>

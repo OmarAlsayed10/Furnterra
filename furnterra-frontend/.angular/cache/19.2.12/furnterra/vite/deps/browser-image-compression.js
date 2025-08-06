@@ -1,7 +1,7 @@
 import {
   __spreadProps,
   __spreadValues
-} from "./chunk-WDMUDEB6.js";
+} from "./chunk-4MWRP73S.js";
 
 // node_modules/browser-image-compression/dist/browser-image-compression.mjs
 function _mergeNamespaces(e2, t2) {

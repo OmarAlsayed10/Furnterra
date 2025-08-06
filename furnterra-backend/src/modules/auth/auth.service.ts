@@ -22,7 +22,25 @@ export class AuthService implements OnModuleInit {
         })
     }
 
+
+
     async onModuleInit() {
+        const ownerEmail = "owner@Furntera.com";
+        const  ownerExist = await this.usersService.findByEmail(ownerEmail)
+        if(!ownerExist){
+            const hashPassword = await bcrypt.hash("ownerKi1@",10)
+            await this.usersService.create({
+                email:ownerEmail,
+                firstName:"Owner",
+                lastName:"user",
+                password:hashPassword,
+                isVerified:true,
+                provider:'local',
+                role:'owner',
+                permissions:['*']
+
+            })
+        }
         const adminEmail = "admin@Furntera.com";
         const  adminExist = await this.usersService.findByEmail(adminEmail)
         if(!adminExist){
@@ -30,14 +48,16 @@ export class AuthService implements OnModuleInit {
             await this.usersService.create({
                 email:adminEmail,
                 firstName:"Admin",
-                lastName:"user",
+                lastName:"user2",
                 password:hashPassword,
                 isVerified:true,
                 provider:'local',
                 role:'admin',
+                permissions:['manage-blogs']
 
             })
         }
+        
     }
 
     private generateOTP(length=6):string{
@@ -210,6 +230,42 @@ export class AuthService implements OnModuleInit {
     }
 
     return this.login(user)
+
+   }
+
+   async createAdmin(ownerId:string,
+    adminData:{
+        email:string;
+        password:string;
+        firstName:string;
+        lastName:string;
+        permissions:string[]
+    }
+   ){
+    const owner = await this.usersService.findById(ownerId)
+    if(!owner || owner.role !=="owner"){
+        throw new UnauthorizedException("Only Owner can create Admins")
+    }
+
+    const existing = await this.usersService.findByEmail(adminData.email)
+    if(existing){
+        throw new BadRequestException("Admin with this email already exist")
+    }
+
+    const hashedPassword = await bcrypt.hash(adminData.password,10)
+
+    const newAdmin = await this.usersService.create({
+        email:adminData.email,
+        password:hashedPassword,
+        firstName:adminData.firstName,
+        lastName:adminData.lastName,
+        role:"admin",
+        provider:'local',
+        isVerified:true,
+        permissions:adminData.permissions
+    })
+
+    return {message:"Admin has been created sucessfully",adminId:newAdmin._id}
 
    }
 }

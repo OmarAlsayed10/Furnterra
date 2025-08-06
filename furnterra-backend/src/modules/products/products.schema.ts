@@ -30,10 +30,10 @@ export class Product {
   inStock?: boolean;
 
   @Prop()
-  stock?: number;
+  stock: number;
 
   @Prop()
-  sold?: number;
+  sold: number;
 }
 
 export const ProductSchema = SchemaFactory.createForClass(Product);

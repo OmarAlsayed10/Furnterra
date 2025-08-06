@@ -14,11 +14,8 @@ export class Blog{
     @Prop({required:true,unique:false})
     content:string
 
-    @Prop({required:true})
-    date:Date
-
-    @Prop({required:true})
-    image:string
+    @Prop({required:true,type:[String]})
+    image:string[]
 
 }
 

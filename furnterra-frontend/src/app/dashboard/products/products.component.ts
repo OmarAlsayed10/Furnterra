@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
-import { ProductsService } from '../../products/products.service';
+import { ProductsService } from '../../services/products/products.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AlertsService } from '../../shared/components/alert/alerts.service';
@@ -14,20 +14,21 @@ import { AlertsService } from '../../shared/components/alert/alerts.service';
 export class ProductsComponent implements OnInit {
 
   selectedProduct:any=null;
+  
 
   selectedTab: 'details' | 'inventory' | 'price' ='details' ;
   
   products:any[]=[]
-
+  
   editForm:FormGroup
-
+  
   trackByProductId(index:number,product:any):string{
     return product._id
   }
-
+  
   constructor(private service:ProductsService,router:Router,private fb:FormBuilder,private alert:AlertsService){
     this.editForm = this.fb.group({
-            name:[""],
+      name:[""],
       description:[""],
       price:[""],
       discount:[""],
@@ -39,10 +40,11 @@ export class ProductsComponent implements OnInit {
       sold:[""]
     })
   }
-
+  
   ngOnInit(): void {
     this.service.getAll().subscribe((res:any)=>{
       this.products=res
+      
     })
   }
 

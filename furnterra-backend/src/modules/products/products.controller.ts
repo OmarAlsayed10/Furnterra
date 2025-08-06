@@ -18,10 +18,7 @@ import { ProductDto } from './dto/product.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { Express } from 'express';
-import {diskStorage} from 'multer'
-import { extname } from 'path';
 
-const MAX_SIZE = 1 * 1024 * 1024
 
 @Controller('products')
 export class ProductsController {
@@ -63,25 +60,6 @@ export class ProductsController {
     return this.productsService.findByCategory(category)
   }
 
- @Post('upload')
- @UseInterceptors(FileInterceptor('image',{
-  limits:{fileSize:MAX_SIZE},
-  fileFilter:(req,file,cb)=>{
-    const allowed = /jpeg|png|jpg|webp/
-    const ext= extname(file.originalname).toLowerCase()
-    if(!allowed.test(ext)){
-      return cb(new BadRequestException('Only images are allowed'),false)
-    }
-    cb(null,true);
-  },
-  storage:diskStorage({
-    destination:'./upload/products',
-    filename:(req,file,cb)=>{
-      const uniquename = `${Date.now()}-${file.originalname}`;
-      cb(null,uniquename)
-    }
-  })
- }))
  uploadImage(@UploadedFile() file:Express.Multer.File){
   return { imageUrl:`./upload/products/${file.filename}`}
  }

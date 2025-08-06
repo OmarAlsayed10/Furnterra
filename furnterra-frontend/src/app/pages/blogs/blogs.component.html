@@ -1,1 +1,40 @@
-<p>blogs works!</p>
+<main class="p-4 sm:p-6 lg:p-8">
+    <div class="flex flex-col sm:flex-row justify-around items-center sm:items-center gap-4 mb-6">
+ <h2 class="text-3xl font-bold">
+        Our Latest <span class="text-yellow-600">News & Blogs</span>
+      </h2>      <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+        <div class="relative w-full sm:w-[250px]">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#99a1af"
+            class="absolute right-2 top-1/2 -translate-y-1/2" stroke-width="1" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+            <path d="M21 21l-6 -6" />
+          </svg>
+          <input type="text" [(ngModel)]="searchTerm" placeholder="Search Blogs..."
+            class="w-full px-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
+        </div>
+      </div>
+    </div>
+    <div class="bg-gray-100 max-w-[90%] md:max-w-[80%] mx-auto py-16 px-6 rounded-xl shadow-md">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <article [routerLink]="['/blogs',blog._id]" *ngFor="let blog of filteredProducts()"
+        class="bg-white rounded-lg shadow hover:shadow-lg cursor-pointer transition overflow-hidden relative">
+        <div class="relative h-60">
+        <picture>
+          <img [src]="blog.image"  alt="Blog-Image" loading="lazy" draggable="false"
+            class="mx-auto w-full h-full object-cover" />
+        </picture>
+        <div
+          class="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-yellow-600 text-white text-xs px-3 py-1 rounded">
+          {{blog.createdAt|longDate}}
+        </div>
+      </div>
+
+      <div class="p-5 space-y-2">
+        <h3 class="font-semibold text-lg">{{blog.name}}</h3>
+        <p [innerHTML]="blog.content" class="text-sm text-gray-600 line-clamp-3 "></p>
+        </div>
+    </article>
+    </div>
+  </div>
+</main>

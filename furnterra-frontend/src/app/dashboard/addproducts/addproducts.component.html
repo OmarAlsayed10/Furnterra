@@ -34,11 +34,6 @@
             class="mt-1 block w-full border border-gray-500 rounded-md px-4 py-2 focus:outline-none" />
         </div>
         <div>
-          <label class="block text-sm font-medium text-gray-700 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">Sold</label>
-          <input type="text" formControlName="sold"
-            class="mt-1 block w-full border border-gray-500 rounded-md px-4 py-2 focus:outline-none" />
-        </div>
-        <div>
           <label class="block text-sm font-medium text-gray-700 focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">In Stock</label>
           <select formControlName="inStock"
             class="mt-1 block w-full border border-gray-500 rounded-md px-4 py-2 focus:outline-none">
@@ -56,7 +51,7 @@
 
       <div>
         <label class="block text-sm font-medium text-gray-700">Product Images</label>
-        <app-image-uploader (imagesChanged)="onImagesChanges($event)">
+        <app-image-uploader [uploadType]="'products'" (imagesChanged)="onImagesChanges($event)">
           </app-image-uploader>
       </div>
 

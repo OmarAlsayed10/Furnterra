@@ -1,4 +1,5 @@
 import {
+  BadRequestException,
   Body,
   Controller,
   Delete,
@@ -6,7 +7,9 @@ import {
   Param,
   Patch,
   Post,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { BlogsService } from './blogs.service';
 import { Role } from 'src/common/decorators/role.decorator';
@@ -16,6 +19,7 @@ import { BlogDto } from './blogs.dto';
 
 @Controller('blogs')
 export class BlogsController {
+
   constructor(private blogService: BlogsService) {}
 
   @UseGuards(AuthGuard('jwt'), RolesGuard)
@@ -39,7 +43,12 @@ export class BlogsController {
     return this.blogService.deleteBlog(id);
   }
 
-  @Get('id')
+  uploadImage(@UploadedFile() file:Express.Multer.File){
+    return {imageUrl:`./upload/blogs/${file.filename}`}
+  }
+
+
+  @Get(':id')
   getOne(@Param('id') id: string) {
     return this.blogService.getBlog(id);
   }

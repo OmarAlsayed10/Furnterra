@@ -2,28 +2,33 @@
     <div class="flex flex-col items-center gap-4 uppercase">
         <h2 class="text-2xl">Best Selling products</h2>
         <div class="flex text-sm">
-            <ul class="flex font-light text-gray-800 gap-5">
-                <li class="cursor-pointer">All</li>
-                <li class="font-semibold underline cursor-pointer">Featured</li>
-                <li class="cursor-pointer">Best Seller</li>
-                <li class="cursor-pointer">Sells</li>
+            <ul class="flex font-light text-gray-800 gap-5 mb-4">
+                <li (click)="selectTab('All')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='All'}">All</li>
+                <li (click)="selectTab('Featured')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Featured'}">Featured</li>
+                <li (click)="selectTab('Best Seller')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Best Seller'}">Best Seller</li>
+                <li (click)="selectTab('Sells')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Sells'}">Sells</li>
             </ul>
         </div>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <div class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
-                <picture class="block">
-          <source srcset="assets/images/clock.webp" type="image/webp" />
-          <source srcset="assets/images/clock.png" type="image/png" />
-          <img src="assets/images/clock.png" alt="Modern decorative wall clock with sleek design" loading="lazy"
-            draggable="false" width="350" height="300" class="mx-auto w-full max-w-[350px] h-auto object-contain bg-gray-200 rounded p-5" />
+    <div *ngIf="selectedTab === 'Featured'" class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div *ngFor="let product of products" class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
+                <picture *ngIf="product.images && product.images.length > 0">
+          <source [srcset]="product.images[0]" type="image/webp" />
+          <img [src]="product.images[0]" loading="eager" draggable="false" class="w-full rounded-lg object-cover" />
         </picture>
             <div class="flex justify-between">
-                <p class="first-letter:uppercase font-light">accessories</p>
-                <i>Heart</i>
+                          <h3 class="font-medium">{{product.name}}</h3>
+                  <button (click)="toggleWishlist()"
+            class="cursor-pointer duration-200 flex items-center justify-center space-x-2">
+            <svg class="w-5 h-5" [class.fill-red-500]="isInWishlist" [class.text-red-500]="isInWishlist" fill="none"
+              stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
+              </path>
+            </svg>
+          </button>
             </div>
-            <h3 class="font-medium">Wooden Wall Clock</h3>
-            <p>$29</p>
+            <p>${{product.price}}</p>
             </div>
         </div>
         <p class="text-center uppercase hover:underline cursor-pointer my-4">See all products</p>

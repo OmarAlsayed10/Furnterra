@@ -1,4 +1,99 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000000"
-      class="cursor-pointer focus:outline-none" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19.5 12.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-    </svg>
+@if(favoriteMenu){
+<div class="fixed right-5 top-12 w-96 z-50 bg-white rounded-lg shadow-2xl border border-gray-200 overflow-hidden">
+
+  <div class="bg-yellow-700 text-white p-4 flex justify-between items-center">
+    <h2 class="text-lg font-bold">Favorite</h2>
+    <button (click)="closeFavoriteMenu()" class="text-gray-300 hover:text-white cursor-pointer">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <ng-container *ngIf="favoriteItem$ | async as items">
+    <ng-container *ngIf="items.length > 0; else noItems">
+
+      <div class="p-4 space-y-4 max-h-96 overflow-y-auto">
+        <div *ngFor="let item of items" class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+          <div class="w-12 h-12 flex items-center justify-center">
+            <img [src]="item.product.images?.[0]" [alt]="item.product.name"
+              class="w-full h-full object-cover rounded" />
+          </div>
+          <div class="flex-1">
+            <h3 class="font-semibold text-gray-800">{{ item.product.name }}</h3>
+            <p class="text-lg font-bold text-yellow-700">${{ item.product.price }}</p>
+          </div>
+          <div class="flex items-center space-x-2">
+            <button (click)="decrease(item.product._id)"
+              class="bg-gray-200 hover:bg-gray-300 cursor-pointer w-6 h-6 rounded-full flex items-center justify-center text-gray-700">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+              </svg>
+            </button>
+            <span class="font-semibold text-gray-800 min-w-[20px] text-center">{{ item.quantity }}</span>
+            <button (click)="increase(item.product._id)"
+              class="bg-gray-200 hover:bg-gray-300 cursor-pointer w-6 h-6 rounded-full flex items-center justify-center text-gray-700">
+              <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6">
+                </path>
+              </svg>
+            </button>
+          </div>
+          <button (click)="removeItem(item.product._id)" class="text-red-500 cursor-pointer hover:text-red-700 ml-2">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16">
+              </path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div class="border-t bg-gray-50 p-4 space-y-3">
+        <div class="flex justify-between items-center">
+          <span class="text-gray-600">Shipping:</span>
+          <span class="font-semibold text-gray-800">$9.99</span>
+        </div>
+        <div class="flex justify-between items-center text-lg font-bold">
+          <span>Total:</span>
+          <span>
+            ${{getTotal(items)| number:'1.2-2'}}
+          </span>
+        </div>
+        <button (click)="moveFavoriteToCart()"
+          class="w-full cursor-pointer bg-green-800 hover:bg-green-900 text-white py-3 rounded-lg font-semibold transition-colors">
+          Add All to Cart
+        </button>
+        <button (click)="clearFavorite()"
+          class="w-full cursor-pointer bg-red-800 hover:bg-red-900 text-white py-2 rounded-lg font-semibold transition-colors">
+          Clear All Favorites
+        </button>
+      </div>
+
+    </ng-container>
+
+    <ng-template #noItems>
+      <div class="text-center text-gray-500 py-10 flex flex-col items-center gap-3">
+        <div class="flex justify-center gap-2">
+          No products in favorite
+          <div>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#e63946" xmlns="http://www.w3.org/2000/svg">
+              <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+           2 5.42 4.42 3 7.5 3 
+           c1.74 0 3.41 0.81 4.5 2.09 
+           C13.09 3.81 14.76 3 16.5 3 
+           19.58 3 22 5.42 22 8.5 
+           c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+
+          </div>
+
+        </div>
+        <button [routerLink]="'/products'"
+          class="w-[50%] cursor-pointer bg-yellow-600 hover:bg-yellow-700 text-white py-2 rounded-lg font-semibold transition-colors">Shop
+          Now</button>
+      </div>
+    </ng-template>
+  </ng-container>
+</div>
+}
