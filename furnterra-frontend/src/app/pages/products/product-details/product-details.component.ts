@@ -102,4 +102,11 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
       const action = this.isInWishlist ? 'Added to' : 'Removed from';
   this.alertService.show(`${action} wishlist: ${this.product.name}`, 'success');
   }
+
+    getDiscountedPrice(): number {
+    if (this.product.discount && this.product.discount > 0) {
+      return this.product.price - (this.product.price * this.product.discount / 100);
+    }
+    return this.product.price;
+  }
 }

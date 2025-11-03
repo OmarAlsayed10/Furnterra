@@ -21,14 +21,12 @@ export class OrdersController {
 
   @UseGuards(AuthGuard('jwt'))
   @Post()
-  async createOrder(@Body() orderDto:createOrderDto,@Req() req:Request) {
-    const user = req.user as {userId:string}
+  async createOrder(@Body() orderDto: createOrderDto, @Req() req: Request) {
+    const user = req.user as { userId: string };
     return this.orderService.createOrder({
       ...orderDto,
-      userId:user.userId
-
+      userId: user.userId,
     });
-
   }
 
   @Patch(':id/pay')
@@ -37,7 +35,7 @@ export class OrdersController {
   }
 
   @UseGuards(AuthGuard('jwt'), RolesGuard)
-  @Role('admin')
+  @Role('admin', 'owner')
   @Get()
   async getOrders() {
     return this.orderService.getAllOrders();

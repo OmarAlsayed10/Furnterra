@@ -5,8 +5,9 @@ export interface ProductDto {
   discount?: number;
   brand?: string;
   category?: string;
-  images?: string[]; 
+  images?: string[];
   inStock?: boolean;
   stock?: number;
-  sold?:number;
+  sold?: number;
+  isFeatured?: boolean;
 }

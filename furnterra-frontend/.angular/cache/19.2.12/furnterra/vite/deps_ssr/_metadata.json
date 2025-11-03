@@ -1,97 +1,103 @@
 {
-  "hash": "94e96cc4",
-  "configHash": "9d329be2",
-  "lockfileHash": "32d36557",
-  "browserHash": "6c5ddb4f",
+  "hash": "b13a78af",
+  "configHash": "02a3f7f7",
+  "lockfileHash": "e870f242",
+  "browserHash": "53dcfe03",
   "optimized": {
     "@angular/common": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/common.mjs",
       "file": "@angular_common.js",
-      "fileHash": "72a74a05",
+      "fileHash": "b3fbee6b",
       "needsInterop": false
     },
     "@angular/common/http": {
       "src": "../../../../../../node_modules/@angular/common/fesm2022/http.mjs",
       "file": "@angular_common_http.js",
-      "fileHash": "c5021619",
+      "fileHash": "3a385e13",
       "needsInterop": false
     },
     "@angular/core": {
       "src": "../../../../../../node_modules/@angular/core/fesm2022/core.mjs",
       "file": "@angular_core.js",
-      "fileHash": "b0c329e8",
+      "fileHash": "606504d0",
       "needsInterop": false
     },
     "@angular/forms": {
       "src": "../../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
       "file": "@angular_forms.js",
-      "fileHash": "e034a3a4",
+      "fileHash": "112134f7",
+      "needsInterop": false
+    },
+    "@angular/material/dialog": {
+      "src": "../../../../../../node_modules/@angular/material/fesm2022/dialog.mjs",
+      "file": "@angular_material_dialog.js",
+      "fileHash": "868e2b28",
       "needsInterop": false
     },
     "@angular/platform-browser": {
       "src": "../../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
       "file": "@angular_platform-browser.js",
-      "fileHash": "671e0dfa",
+      "fileHash": "2f2340e1",
       "needsInterop": false
     },
     "@angular/platform-server": {
       "src": "../../../../../../node_modules/@angular/platform-server/fesm2022/platform-server.mjs",
       "file": "@angular_platform-server.js",
-      "fileHash": "b37f137f",
+      "fileHash": "62108f3d",
       "needsInterop": false
     },
     "@angular/router": {
       "src": "../../../../../../node_modules/@angular/router/fesm2022/router.mjs",
       "file": "@angular_router.js",
-      "fileHash": "e4b33057",
+      "fileHash": "032fda7f",
       "needsInterop": false
     },
     "@angular/ssr": {
       "src": "../../../../../../node_modules/@angular/ssr/fesm2022/ssr.mjs",
       "file": "@angular_ssr.js",
-      "fileHash": "e3960bf8",
+      "fileHash": "56299565",
       "needsInterop": false
     },
     "@angular/ssr/node": {
       "src": "../../../../../../node_modules/@angular/ssr/fesm2022/node.mjs",
       "file": "@angular_ssr_node.js",
-      "fileHash": "68cb4e9a",
+      "fileHash": "e4e1af61",
       "needsInterop": false
     },
     "browser-image-compression": {
       "src": "../../../../../../node_modules/browser-image-compression/dist/browser-image-compression.mjs",
       "file": "browser-image-compression.js",
-      "fileHash": "c66055aa",
+      "fileHash": "ea7a007d",
       "needsInterop": false
     },
     "compression": {
       "src": "../../../../../../node_modules/compression/index.js",
       "file": "compression.js",
-      "fileHash": "85c1647c",
+      "fileHash": "0a904071",
       "needsInterop": true
     },
     "express": {
       "src": "../../../../../../node_modules/express/index.js",
       "file": "express.js",
-      "fileHash": "a0197698",
+      "fileHash": "63b30a9e",
       "needsInterop": true
     },
     "ngx-quill": {
-      "src": "../../../../../../node_modules/ngx-quill/fesm2015/ngx-quill.mjs",
+      "src": "../../../../../../node_modules/ngx-quill/fesm2022/ngx-quill.mjs",
       "file": "ngx-quill.js",
-      "fileHash": "ab50f8de",
+      "fileHash": "e93c8ae5",
       "needsInterop": false
     },
     "rxjs": {
       "src": "../../../../../../node_modules/rxjs/dist/cjs/index.js",
       "file": "rxjs.js",
-      "fileHash": "3e1b7121",
+      "fileHash": "3795668b",
       "needsInterop": true
     }
   },
   "chunks": {
-    "chunk-5XGGXJHF": {
-      "file": "chunk-5XGGXJHF.js"
+    "quill-GNTYR5AD": {
+      "file": "quill-GNTYR5AD.js"
     },
     "chunk-5HQ44X5F": {
       "file": "chunk-5HQ44X5F.js"
@@ -99,8 +105,8 @@
     "xhr2-HQX5CY5B": {
       "file": "xhr2-HQX5CY5B.js"
     },
-    "quill-GNTYR5AD": {
-      "file": "quill-GNTYR5AD.js"
+    "chunk-5XGGXJHF": {
+      "file": "chunk-5XGGXJHF.js"
     },
     "chunk-2HQJOAKK": {
       "file": "chunk-2HQJOAKK.js"

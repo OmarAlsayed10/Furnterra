@@ -1,0 +1,39 @@
+<main class="min-h-screen bg-gray-50 p-6">
+  <div class="text-center text-2xl font-bold mb-6">
+    <h1>Search for users</h1>
+  </div>
+
+  <div class="max-w-6xl mx-auto">
+    <!-- Search bar -->
+    <div class="relative w-full mb-6">
+      <input [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" type="text" placeholder="Search By Email"
+        class="w-full pr-10 pl-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="#99a1af"
+        class="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer" stroke-width="1" stroke-linecap="round"
+        stroke-linejoin="round">
+        <circle cx="10" cy="10" r="7" />
+        <line x1="21" y1="21" x2="15" y2="15" />
+      </svg>
+    </div>
+
+    <div class="flex flex-col gap-6">
+      <div *ngFor="let user of users"
+        class="bg-white shadow-md rounded-lg p-4 border border-gray-200 cursor-pointer hover:shadow-lg hover:-translate-y-2 transition overflow-hidden">
+        <div (click)="openUserModel(user._id)" class="flex items-center justify-between">
+          <div class="flex flex-col gap-2">
+            <h2 class="text-lg font-semibold text-gray-800">
+              {{ user.firstName + " " + user.lastName }}
+            </h2>
+            <p class="text-gray-500 text-sm">{{ user.email }}</p>
+            <p class="bg-gray-200 text-center rounded-lg text-[13px] lowercase py-1">
+              {{ user.permissions }}
+            </p>
+          </div>
+          <p class="bg-amber-300 px-2 py-1 rounded-lg">{{ user.role }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages"
+    (pageChange)="goToPage($event)"></app-pagination>
+</main>

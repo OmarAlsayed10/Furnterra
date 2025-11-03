@@ -44,8 +44,7 @@
         <div class="space-y-2">
           <div class="flex items-center space-x-3">
             <span class="text-2xl font-bold text-gray-900">
-              ${{product.price}}
-              <!-- ${{ getDiscountedPrice()| number:'1.2-2' }} -->
+              ${{ getDiscountedPrice() | number:'1.2-2' }}
             </span>
             <span *ngIf="product.discount && product.discount > 0" class="text-lg text-gray-500 line-through">
               ${{ product.price | number:'1.2-2' }}
@@ -56,12 +55,7 @@
             </span>
           </div>
           <p class="text-sm text-gray-600" *ngIf="product.discount && product.discount > 0">
-            You save <span class="font-medium text-green-600">$
-              <!-- {{ (product.price - getDiscountedPrice()) | number:'1.2-2' }} -->
-
-              ${{product.price}}
-
-            </span>
+            You save <span class="font-medium text-green-600">${{ (product.price - getDiscountedPrice()) | number:'1.2-2' }}</span>
           </p>
         </div>
 

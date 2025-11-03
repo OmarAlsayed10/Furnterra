@@ -5,33 +5,37 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-products',
-  imports: [RouterModule,CommonModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './products.component.html',
-  styles: ``
+  styles: ``,
 })
 export class ProductsComponent implements OnInit {
+  categories: string[] = [];
+  categoryImages: { [key: string]: string } = {};
 
-  categories:string[]=[]
-  categoryImages:{[key:string]:string}={}
+  constructor(private productservice: ProductsService) { }
 
-  constructor(private productservice:ProductsService){}
-  
-   ngOnInit(): void {
-    this.productservice.getAll().subscribe((products: any[]) => {
-      const unique = new Set(products.map(p => p.category).filter(Boolean));
-      this.categories = Array.from(unique);
-   
-      for(const product of products){
-        if(
-          product.category && product.images && product.images.length > 0 && !this.categoryImages[product.category]
-        ){
-          this.categoryImages[product.category]=product.images[0]
-        }
-      }
-      
-    });
+  ngOnInit(): void {
+    this.loadProducts();
   }
-}
+
+  loadProducts() {
+    this.productservice.getCategories().subscribe((res) => {
+
+      this.categories = res
+
+      res.forEach(category => {
+        this.productservice.getByCategory(category).subscribe((res) => {
+          if (res.items.length > 0 && res.items[0].images && res.items[0].images.length > 0) {
+            this.categoryImages[category] = res.items[0].images[0]
+          }
+        })
+      });
+
+    });
+
+    
+  }
+
   
-
-
+}

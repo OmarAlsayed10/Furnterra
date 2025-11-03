@@ -1,11 +1,11 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterLink, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-admins',
-  imports: [],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './admins.component.html',
-  styles: ``
+  styles: ``,
 })
-export class AdminsComponent {
-
-}
+export class AdminsComponent {}

@@ -5,11 +5,12 @@ export type AdminDocument = Document & Admin;
 
 export enum AdminPermission {
   ADD_BLOG = 'ADD_BLOG',
-  EDIT_USER = 'EDIT_USER',
+  DELETE_BLOG = 'DELETE_BLOG',
+  EDIT_BLOG = 'EDIT_BLOG',
+  ADD_PRODUCT = 'ADD_PRODUCT',
   DELETE_PRODUCT = 'DELETE_PRODUCT',
-  MANAGE_ADMINS = 'MANAGE_ADMINS'
+  EDIT_PRODUCT = 'EDIT_PRODUCT',
 }
-
 
 @Schema({ timestamps: true })
 export class Admin {
@@ -22,9 +23,8 @@ export class Admin {
   @Prop({ required: true })
   password: string;
 
-@Prop({ type: [String], enum: AdminPermission, default: [] })
-permissions: AdminPermission[];
-
+  @Prop({ type: [String], enum: AdminPermission, default: [] })
+  permissions: AdminPermission[];
 }
 
 export const AdminSchema = SchemaFactory.createForClass(Admin);

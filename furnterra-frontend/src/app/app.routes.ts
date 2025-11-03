@@ -1,9 +1,9 @@
 import { Routes } from '@angular/router';
-import { AdminGuard } from './shared/guards/admin.guard.ts.js';
-import { publicGuard } from './shared/guards/public.guard.js';
-import { AuthGuard } from './shared/guards/auth.guard.js';
-import { formDeactivateGuard } from './shared/guards/form-deactivate.guard.js';
-import { CartGuard} from './shared/guards/cart.guard.js';
+import { AdminGuard } from './shared/guards/admin.guard';
+import { publicGuard } from './shared/guards/public.guard';
+import { AuthGuard } from './shared/guards/auth.guard';
+import { formDeactivateGuard } from './shared/guards/form-deactivate.guard';
+import { CartGuard } from './shared/guards/cart.guard';
 
 export const routes: Routes = [
   {
@@ -18,18 +18,22 @@ export const routes: Routes = [
   },
 
   {
-    path:'products',
-    loadComponent:() =>
-      import('./pages/products/products.component').then((m)=>m.ProductsComponent)
+    path: 'products',
+    loadComponent: () =>
+      import('./pages/products/products.component').then(
+        (m) => m.ProductsComponent
+      ),
   },
 
   {
-    path:'collections/:category',
-    loadComponent:()=>
-      import('./pages/products/collections/collections.component').then((m)=>m.CollectionsComponent)
+    path: 'collections/:category',
+    loadComponent: () =>
+      import('./pages/products/collections/collections.component').then(
+        (m) => m.CollectionsComponent
+      ),
   },
 
-    {
+  {
     path: 'products/:collections',
     loadComponent: () =>
       import('./pages/products/collections/collections.component').then(
@@ -38,9 +42,11 @@ export const routes: Routes = [
   },
 
   {
-    path:'product/:id',
-    loadComponent:()=>
-      import('./pages/products/product-details/product-details.component.js').then(m=>m.ProductDetailsComponent)
+    path: 'product/:id',
+    loadComponent: () =>
+      import(
+        './pages/products/product-details/product-details.component.js'
+      ).then((m) => m.ProductDetailsComponent),
   },
 
   {
@@ -71,24 +77,50 @@ export const routes: Routes = [
   {
     path: 'blogs/:id',
     loadComponent: () =>
-      import('./pages/blogs/blogsdetails/blogsdetails.component').then((m) => m.BlogsdetailsComponent),
+      import('./pages/blogs/blogsdetails/blogsdetails.component').then(
+        (m) => m.BlogsdetailsComponent
+      ),
   },
 
   {
     path: 'contactus',
     loadComponent: () =>
-      import('./pages/contact/contact.component').then((m) => m.ContactComponent),
+      import('./pages/contact/contact.component').then(
+        (m) => m.ContactComponent
+      ),
   },
   {
-    path:'checkout',
-    canActivate:[AuthGuard],
-    children:[
-      {path:'address',loadComponent:()=>import('./pages/checkout/address/address.component').then((m)=>m.AddressComponent),canDeactivate:[formDeactivateGuard],canActivate:[CartGuard]},
-      {path:'payment',loadComponent:()=>import('./pages/checkout/payment/payment.component').then((m)=>m.PaymentComponent),canDeactivate:[formDeactivateGuard],canActivate:[CartGuard]},
-      {path:'showorder',loadComponent:()=>import('./pages/checkout/showorder/showorder.component').then((m)=>m.ShoworderComponent),canActivate:[CartGuard]},
-      {path:'',pathMatch:'full',redirectTo:'address'}
+    path: 'checkout',
+    canActivate: [AuthGuard],
+    children: [
+      {
+        path: 'address',
+        loadComponent: () =>
+          import('./pages/checkout/address/address.component').then(
+            (m) => m.AddressComponent
+          ),
+        canDeactivate: [formDeactivateGuard],
+        canActivate: [CartGuard],
+      },
+      {
+        path: 'payment',
+        loadComponent: () =>
+          import('./pages/checkout/payment/payment.component').then(
+            (m) => m.PaymentComponent
+          ),
+        canDeactivate: [formDeactivateGuard],
+        canActivate: [CartGuard],
+      },
+      {
+        path: 'showorder',
+        loadComponent: () =>
+          import('./pages/checkout/showorder/showorder.component').then(
+            (m) => m.ShoworderComponent
+          ),
+        canActivate: [CartGuard],
+      },
+      { path: '', pathMatch: 'full', redirectTo: 'address' },
     ],
-
   },
 
   {
@@ -114,8 +146,15 @@ export const routes: Routes = [
       {
         path: 'admins',
         loadComponent: () =>
-          import('./dashboard/admins/admins.component').then(
-            (m) => m.AdminsComponent
+          import('./dashboard/admins/admin-panel/admin-panel.component').then(
+            (m) => m.AdminPanelComponent
+          ),
+      },
+      {
+        path: 'addadmin',
+        loadComponent: () =>
+          import('./dashboard/admins/add-admins/add-admins.component').then(
+            (m) => m.AddAdminsComponent
           ),
       },
       {
@@ -142,18 +181,17 @@ export const routes: Routes = [
       {
         path: 'addproducts',
         loadComponent: () =>
-          import('./dashboard/addproducts/addproducts.component').then(
-            (m) => m.AddproductsComponent
-          ),
+          import(
+            './dashboard/products/addproducts/addproducts.component.js'
+          ).then((m) => m.AddproductsComponent),
       },
       {
         path: 'addblogs',
         loadComponent: () =>
-          import('./dashboard/addblogs/addblogs.component.js').then(
+          import('./dashboard/blogs/addblogs/addblogs.component.js').then(
             (m) => m.addBlogComponent
           ),
       },
     ],
   },
-  
 ];

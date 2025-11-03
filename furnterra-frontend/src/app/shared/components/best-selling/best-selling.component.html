@@ -1,35 +1,85 @@
 <section class="p-4 pt-10">
-    <div class="flex flex-col items-center gap-4 uppercase">
-        <h2 class="text-2xl">Best Selling products</h2>
-        <div class="flex text-sm">
-            <ul class="flex font-light text-gray-800 gap-5 mb-4">
-                <li (click)="selectTab('All')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='All'}">All</li>
-                <li (click)="selectTab('Featured')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Featured'}">Featured</li>
-                <li (click)="selectTab('Best Seller')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Best Seller'}">Best Seller</li>
-                <li (click)="selectTab('Sells')" class="cursor-pointer" [ngClass]="{'font-semibold underline':selectedTab==='Sells'}">Sells</li>
-            </ul>
-        </div>
+  <div class="flex flex-col items-center gap-4 uppercase">
+    <h2 class="text-2xl">Products</h2>
+    <div class="flex text-sm">
+      <ul class="flex font-light text-gray-800 gap-5 mb-6">
+        <li (click)="selectTab('featured')" class="cursor-pointer"
+          [ngClass]="{ 'font-semibold underline': selectedTab === 'featured' }">
+          Featured
+        </li>
+        <li (click)="selectTab('bestSeller')" class="cursor-pointer"
+          [ngClass]="{ 'font-semibold underline': selectedTab === 'bestSeller' }">
+          Best Seller
+        </li>
+        <li (click)="selectTab('discounted')" class="cursor-pointer"
+          [ngClass]="{ 'font-semibold underline': selectedTab === 'discounted' }">
+          discount
+        </li>
+      </ul>
     </div>
-    <div *ngIf="selectedTab === 'Featured'" class="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            <div *ngFor="let product of products" class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
-                <picture *ngIf="product.images && product.images.length > 0">
-          <source [srcset]="product.images[0]" type="image/webp" />
-          <img [src]="product.images[0]" loading="eager" draggable="false" class="w-full rounded-lg object-cover" />
-        </picture>
-            <div class="flex justify-between">
-                          <h3 class="font-medium">{{product.name}}</h3>
-                  <button (click)="toggleWishlist()"
-            class="cursor-pointer duration-200 flex items-center justify-center space-x-2">
-            <svg class="w-5 h-5" [class.fill-red-500]="isInWishlist" [class.text-red-500]="isInWishlist" fill="none"
-              stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z">
-              </path>
-            </svg>
-          </button>
+  </div>
+
+  <!-- Carousel -->
+  <div class="relative overflow-hidden">
+    <div class="flex transition-transform duration-700 ease-in-out"
+      [style.transform]="'translateX(-' + currentSlide * 100 + '%)'">
+
+      <!-- Each slide -->
+      <div *ngFor="let chunk of getProductChunks()"
+        class="min-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 flex-shrink-0 gap-4 px-2">
+        <div *ngFor="let product of chunk"
+          class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
+
+          <div class="w-full h-64 overflow-hidden rounded-lg">
+            <picture *ngIf="product.images && product.images.length > 0">
+              <source [srcset]="product.images[0]" type="image/webp" />
+              <img [src]="product.images[0]" loading="eager" draggable="false" class="w-full h-full object-cover" />
+            </picture>
+          </div>
+
+          <div class="flex justify-between items-center mt-2">
+            <h3 class="font-medium text-sm md:text-base mb-4">{{ product.name }}</h3>
+            <button (click)="toggleWishlist(product)"
+              class="cursor-pointer duration-200 flex items-center justify-center space-x-2">
+              <svg class="w-5 h-5" [class.fill-red-500]="isInWishlist" [class.text-red-500]="isInWishlist" fill="none"
+                stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+              </svg>
+            </button>
+          </div>
+
+          <div class="space-y-2">
+            <div class="flex items-center space-x-3">
+              <span class="text-[20px] font-bold text-gray-900">
+                ${{ getDiscountedPrice(product) | number:'1.2-2' }}
+              </span>
+              <span *ngIf="selectedTab === 'discounted' && product.discount && product.discount > 0"
+                class="text-md text-gray-500 line-through">
+                ${{ product.price | number:'1.2-2' }}
+              </span>
+              <span *ngIf="selectedTab === 'discounted' && product.discount && product.discount > 0"
+                class="bg-red-100 text-red-700 text-[13px] font-regular px-1 py-1 rounded">
+                {{ product.discount }}% OFF
+              </span>
             </div>
-            <p>${{product.price}}</p>
-            </div>
+          </div>
         </div>
-        <p class="text-center uppercase hover:underline cursor-pointer my-4">See all products</p>
+      </div>
+    </div>
+
+    <!-- Controls -->
+    <button (click)="prevSlide()"
+      class="absolute left-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded hover:bg-gray-700">
+      ‹
+    </button>
+    <button (click)="nextSlide()"
+      class="absolute right-0 top-1/2 -translate-y-1/2 bg-gray-800 text-white px-3 py-2 rounded hover:bg-gray-700">
+      ›
+    </button>
+  </div>
+
+  <p class="text-center uppercase hover:underline cursor-pointer my-6">
+    See all products
+  </p>
 </section>

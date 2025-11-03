@@ -1,64 +1,64 @@
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <nav class="mb-8">
-            <ol class="flex items-center space-x-2 text-sm text-gray-500">
-                <li><a [routerLink]="'/'" class="hover:text-orange-500 transition-colors">Home</a></li>
-                <li><span class="mx-2">/</span></li>
-                <li><a [routerLink]="'/blogs'" class="hover:text-orange-500 transition-colors">Blogs</a></li>
-                <li><span class="mx-2">/</span></li>
-                <li>{{blog.name}}</li>
-            </ol>
-        </nav>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <nav class="mb-8">
+        <ol class="flex items-center space-x-2 text-sm text-gray-500">
+            <li><a [routerLink]="'/'" class="hover:text-orange-500 transition-colors">Home</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li><a [routerLink]="'/blogs'" class="hover:text-orange-500 transition-colors">Blogs</a></li>
+            <li><span class="mx-2">/</span></li>
+            <li>{{blog.name}}</li>
+        </ol>
+    </nav>
 
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            <article class="lg:col-span-2">
-                <header class="mb-8">
-                    <h1  class="text-4xl font-bold mb-4 leading-tight">
-                        {{blog.name}}
-                    </h1>
-                    <div class="flex items-center space-x-4 text-gray-600">
-                        <span>•</span>
-                        <time>{{blog.createdAt|longDate}}</time>
-                    </div>
-                </header>
-
-                <picture *ngIf="blog.image">
-        <source [srcset]="blog.image[0]" type="image/webp" />
-        <img [src]="blog.image[0]" loading="eager" draggable="false"
-          class="w-full rounded-lg object-top h-[30%]" />
-      </picture>
-
-                <div class="prose prose-lg max-w-none">
-                    {{blog.content}}
-                    <div class="bg-gray-900 text-white p-8 rounded-lg mt-12">
-                        <h3 class="text-2xl font-semibold mb-4">Ready to Transform Your House?</h3>
-                        <p class="mb-6 opacity-90">
-                            Let our expert designers help you create the House of your dreams. Contact us for a free consultation.
-                        </p>
-                        <button [routerLink]="'/contactus'" class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
-                            Get Started
-                        </button>
-                    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <article class="lg:col-span-2">
+            <header class="mb-8">
+                <h1 class="text-4xl font-bold mb-4 leading-tight">
+                    {{blog.name}}
+                </h1>
+                <div class="flex items-center space-x-4 text-gray-600">
+                    <span>•</span>
+                    <time>{{blog.createdAt|longDate}}</time>
                 </div>
-            </article>
+            </header>
 
-            <aside class="lg:col-span-1">
-                <div class="bg-white rounded-lg p-6 shadow-sm mb-8">
-                    <h3 class="text-lg font-semibold mb-6">Related Articles</h3>
-                    <div class="flex flex-col gap-6">
-                        <article *ngFor="let related of relatedBlogs" [routerLink]="['/blogs',related._id]" class="flex gap-4 cursor-pointer hover:text-orange-500 transition-colors text=gray=900">
-                            <img [src]="related.image" 
-                                 [alt]="related.name" 
-                                 class="w-15 h-15 object-cover rounded-lg">
-                            <div>
-                                <h4 class="font-medium text-sm leading-tight mb-1">
-                                    <a>{{related.name}}</a>
-                                </h4>
-                                <p class="text-gray-600 text-xs">{{related.createdAt|longDate}}</p>
-                            </div>
-                        </article>
-                    </div>
+            <picture *ngIf="blog.image">
+                <source [srcset]="blog.image[0]" type="image/webp" />
+                <img [src]="blog.image[0]" loading="eager" draggable="false"
+                    class="w-full rounded-lg object-top h-[30%]" />
+            </picture>
+
+            <div class="prose prose-lg max-w-none">
+                {{blog.content}}
+                <div class="bg-gray-900 text-white p-8 rounded-lg mt-12">
+                    <h3 class="text-2xl font-semibold mb-4">Ready to Transform Your House?</h3>
+                    <p class="mb-6 opacity-90">
+                        Let our expert designers help you create the House of your dreams. Contact us for a free
+                        consultation.
+                    </p>
+                    <button [routerLink]="'/contactus'"
+                        class="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-medium transition-colors">
+                        Get Started
+                    </button>
                 </div>
-            </aside>
-        </div>
-    </main>
+            </div>
+        </article>
 
+        <aside class="lg:col-span-1">
+            <div class="bg-white rounded-lg p-6 shadow-sm mb-8">
+                <h3 class="text-lg font-semibold mb-6">Related Articles</h3>
+                <div class="flex flex-col gap-6">
+                    <article *ngFor="let related of relatedBlogs" [routerLink]="['/blogs',related._id]"
+                        class="flex items-center gap-4 cursor-pointer hover:text-orange-500 transition-colors text-gray-900">
+                        <img [src]="related.image" [alt]="related.name" class="w-14 h-14 object-cover rounded-lg">
+                        <div>
+                            <h4 class="font-medium text-sm leading-tight mb-1">
+                                <a>{{related.name}}</a>
+                            </h4>
+                            <p class="text-gray-600 text-xs">{{related.createdAt|longDate}}</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </aside>
+    </div>
+</main>

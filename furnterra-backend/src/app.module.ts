@@ -8,20 +8,20 @@ import { PendingUserModule } from './modules/auth/pending-user/pending-user.modu
 import { BlogsModule } from './modules/blogs/blogs.module';
 import { OrdersModule } from './modules/orders/orders.module';
 import { UploadModule } from './modules/upload/upload.module';
-
-
+import { AdminService } from './modules/admin/admin.service';
+import { UsersController } from './modules/users/users.controller';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      isGlobal:true
+      isGlobal: true,
     }),
     MongooseModule.forRootAsync({
-      imports:[ConfigModule],
-      useFactory:async (configService:ConfigService)=>({
-        uri:configService.get<string>('MONGODB_URI',{infer:true}),
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => ({
+        uri: configService.get<string>('MONGODB_URI', { infer: true }),
       }),
-      inject:[ConfigService]
+      inject: [ConfigService],
     }),
     UsersModule,
     AuthModule,
@@ -29,9 +29,9 @@ import { UploadModule } from './modules/upload/upload.module';
     PendingUserModule,
     BlogsModule,
     OrdersModule,
-    UploadModule
+    UploadModule,
   ],
-  controllers: [],
-  providers: [],
+  controllers: [UsersController],
+  providers: [AdminService],
 })
 export class AppModule {}

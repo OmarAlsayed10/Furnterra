@@ -9,7 +9,7 @@
     </ol>
   </nav>
 
-  <main class="p-4 sm:p-6 lg:p-8">
+  <section class="p-4 sm:p-6 lg:p-8">
     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
       <h2 class="text-2xl font-bold capitalize">{{ currentCollectionName }} Collection</h2>
       <div class="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -20,14 +20,14 @@
             <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
             <path d="M21 21l-6 -6" />
           </svg>
-          <input type="text" [(ngModel)]="searchTerm" placeholder="Search products..."
+          <input type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchChange()" placeholder="Search products..."
             class="w-full px-4 py-2 rounded-md border-2 border-gray-400 text-sm text-gray-500 focus:outline-none" />
         </div>
       </div>
     </div>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      <a [routerLink]="['/product',product._id]" *ngFor="let product of filteredProducts()"
+      <a [routerLink]="['/product',product._id]" *ngFor="let product of products"
         class="border p-4 rounded-2xl hover:-translate-y-2 transition-all duration-200 ease-in-out hover:shadow hover:shadow-yellow-600 hover:border-yellow-600">
         <picture *ngIf="product.images && product.images.length > 0">
           <source [srcset]="product.images[0]" type="image/webp" />
@@ -46,11 +46,16 @@
             <div>
               <p class="text-gray-600">Status</p>
               <p [ngClass]="product.inStock ? 'text-green-600' : 'text-red-600'">
-                {{ product.inStock ? 'In Stock' : 'Out of Stock' }}
+                {{ product.inStock > 0 ? 'In Stock' : 'Out of Stock' }}
               </p>
             </div>
           </div>
         </div>
       </a>
     </div>
-  </main>
+    <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChange)="goToPage($event)"
+    ></app-pagination>
+  </section>

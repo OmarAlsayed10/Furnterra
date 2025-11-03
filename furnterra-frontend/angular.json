@@ -28,6 +28,8 @@
             ],
             "styles": [
                 "node_modules/quill/dist/quill.snow.css",
+                "node_modules/slick-carousel/slick/slick.css",
+                "node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -98,5 +100,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

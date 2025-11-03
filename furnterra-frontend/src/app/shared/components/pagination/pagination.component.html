@@ -1,0 +1,16 @@
+<div class="flex justify-center space-x-2 mt-6">
+    <button (click)="prev()" [disabled]="currentPage === 1"
+        class="px-3 py-1 cursor-pointer rounded border hover:bg-gray-200 disabled:opacity-50">
+        ‹
+    </button>
+
+    <button *ngFor="let page of pages" (click)="goToPage(page)" [class.font-bold]="page === currentPage"
+        class="px-3 py-1 cursor-pointer rounded border hover:bg-gray-200">
+        {{ page }}
+    </button>
+
+    <button (click)="next()" [disabled]="currentPage === totalPages"
+        class="px-3 py-1 cursor-pointer rounded border hover:bg-gray-200 disabled:opacity-50">
+        ›
+    </button>
+</div>
