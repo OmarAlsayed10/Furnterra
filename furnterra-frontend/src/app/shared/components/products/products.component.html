@@ -8,9 +8,9 @@
         <div>
           <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[0]}}</h2>
         </div>
-        <picture class="block mt-4">
+        <picture class=" mt-4 h-[200px] flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[0]]" [alt]="primaryCategories[0]" loading="lazy"
-            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+            draggable="false" class="max-h-full object-contain" />
         </picture>
       </div>
 
@@ -19,9 +19,9 @@
         <div>
           <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[1]}}</h2>
         </div>
-        <picture class="block mt-4">
+        <picture class=" mt-4 h-full flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[1]]" [alt]="primaryCategories[1]" loading="lazy"
-            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+            draggable="false" class="mx-auto w-full max-w-[200px] object-contain" />
         </picture>
       </div>
     </div>
@@ -32,9 +32,9 @@
         <div>
           <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[2]}}</h2>
         </div>
-        <picture class="block mt-4">
+        <picture class=" mt-4 flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[2]]" [alt]="primaryCategories[2]" loading="lazy"
-            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+            draggable="false" class="mx-auto w-full max-w-[400px] h-auto object-contain" />
         </picture>
       </div>
     </div>
@@ -43,7 +43,7 @@
 
       <div *ngIf="primaryCategories[3]" [routerLink]="['/collections',primaryCategories[3]]"
         class="bg-orange-100 cursor-pointer p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
-        <picture class="block">
+        <picture class=" mt-4 h-[200px] flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[3]]" [alt]="primaryCategories[3]" loading="lazy"
             draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
@@ -54,7 +54,7 @@
 
       <div *ngIf="primaryCategories[4]" [routerLink]="['/collections',primaryCategories[4]]"
         class="bg-gray-300 p-3  cursor-pointer rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
-        <picture class="block">
+        <picture class=" mt-4 h-[200px] flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[4]]" [alt]="primaryCategories[4]" loading="lazy"
             draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
@@ -65,7 +65,7 @@
 
       <div *ngIf="primaryCategories[5]" [routerLink]="['/collections',primaryCategories[5]]"
         class="bg-cyan-200 cursor-pointer p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
-        <picture class="block">
+        <picture class=" mt-4 h-[200px] flex items-center justify-center overflow-hidden">
           <img [src]="categoryImages[primaryCategories[5]]" [alt]="primaryCategories[5]" loading="lazy"
             draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>

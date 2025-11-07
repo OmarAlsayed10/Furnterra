@@ -19,7 +19,7 @@ export class AuthService {
   currentUser$ = this.currentUserSubject.asObservable()
   authReady = new BehaviorSubject(false)
 
-  login(data:{email:string; password:string,firstName:string,lastName:string}){
+  login(data:{email:string; password:string}){
     return this.http.post<{access_token:string,user:{firstName:string,lastName:string,email:string,role:string}}>(`${this.API}/login`,data);
   }
 

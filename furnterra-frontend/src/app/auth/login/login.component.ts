@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 import { Router, RouterModule } from '@angular/router';
 import {ReactiveFormsModule,FormBuilder,FormGroup,Validators} from '@angular/forms'
 import { AlertsService } from '../../shared/components/alert/alerts.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent {
   constructor(private fb:FormBuilder,private auth:AuthService,private route:Router,private alert:AlertsService){
     this.loginForm=this.fb.group({
       email:["",[Validators.required,Validators.email]],
-      password:["",[Validators.required,Validators.minLength(8),Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]]
+      password:["",[Validators.required]]
     })
   }
 
@@ -26,27 +27,28 @@ export class LoginComponent {
        return;
     }
 
-    const {email,password,firstName,lastName} = this.loginForm.value
-    this.auth.login({email,password,firstName,lastName}).subscribe({
+    const {email,password} = this.loginForm.value;
+    
+    this.auth.login({email,password}).subscribe({
       next:(res)=>{
         if(!res.access_token){
-          this.alert.show("user doesn't exist",'error')
+          this.loginForm.setErrors({invalidCredentials: true});
           return;
         }
-        this.auth.setToken(res.access_token)
-        this.auth.setUser(res.user)
-        this.route.navigate(["/"])
+        this.auth.setToken(res.access_token);
+        this.auth.setUser(res.user);
+        this.route.navigate(["/"]);
       },
-      error:(err)=>{
-        
-          if(err.error.message.includes("Verify OTP")){
-            sessionStorage.setItem("emailForOtp",email)
-            this.route.navigate(["/verify-otp"])
-          }
-        else{
-        this.alert.show("email or password is wrong !",'error')
+      error:(err:HttpErrorResponse)=>{
+        const errorMessage = err?.error?.message || ""
+        if(errorMessage.includes("Verify OTP")){
+          sessionStorage.setItem("emailForOtp",email);
+          this.route.navigate(["/verify-otp"]);
+        }
+        else {
+          this.loginForm.setErrors({invalidCredentials: true});
+        }
       }
-    }
     })
   }
 

@@ -5,41 +5,55 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <div class="mb-4">
             <label>Email</label>
-            <input type="email" formControlName="email" class="w-full border p-2 rounded"/>
-            @if(loginForm.touched && loginForm.get('email')?.invalid){
-                <p class="text-red-500 text-sm">
+            <input type="email" formControlName="email" class="w-full border p-2 rounded focus:outline-none"/>
+            @if(loginForm.get('email')?.touched && loginForm.get('email')?.invalid){
+                <p class="text-red-500 text-sm mt-1">
                     @if(loginForm.get('email')?.errors?.['required']){
-                        Email is Required
+                        Email is required
                     }
-                    
                     @if(loginForm.get('email')?.errors?.["email"]){     
-                        Please Enter a Valid Email
+                        Please enter a valid email
                     }
                 </p>
             }
         </div>
+        
         <div class="mb-4">
             <label>Password</label>
-            <input type="password" formControlName="password" class="w-full border p-2 rounded focus:outline-none "/>
-            @if(loginForm.touched && loginForm.get('password')?.invalid){
-                <p class="text-red-500 text-sm">
+            <input type="password" formControlName="password" class="w-full border p-2 rounded focus:outline-none"/>
+            @if(loginForm.get('password')?.touched && loginForm.get('password')?.invalid){
+                <p class="text-red-500 text-sm mt-1">
                     @if(loginForm.get('password')?.errors?.['required']){
-                        password is required
+                        Password is required
                     }
                 </p>
             }       
         </div>
 
-        <button type="submit" class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer">
+        @if(loginForm.errors?.['invalidCredentials']){
+            <p class="text-red-500 text-sm mb-4">
+                Invalid email or password
+            </p>
+        }
+
+        <button type="submit" [disabled]="loginForm.invalid" 
+                class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition py-2 cursor-pointer disabled:bg-gray-400 disabled:cursor-not-allowed">
             Login
         </button>
+        
         <div class="my-4 text-center text-gray-500 text-sm">OR</div>
-        <button (click)="googleSubmit()" class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition px-2 cursor-pointer" >
+        
+        <button type="button" (click)="googleSubmit()" 
+                class="w-full bg-emerald-600 text-white hover:bg-emerald-800 rounded transition py-2 cursor-pointer">
             Login with Google
         </button>
     </form>
-    <p class="text-center mt-4 text-gray-500">don't have an account? <a class="text-emerald-800 underline" [routerLink]="'/register'">Sign up</a> </p>
-    <p class="text-center text-emerald-800 cursor-pointer" [routerLink]="'/'">forgot password?</p>    
+    
+    <p class="text-center mt-4 text-gray-500">
+      Don't have an account? 
+      <a class="text-emerald-800 underline" [routerLink]="'/register'">Sign up</a>
+    </p>
+    <p class="text-center text-emerald-800 cursor-pointer" [routerLink]="'/'">Forgot password?</p>    
 
   </div>
 </div>
