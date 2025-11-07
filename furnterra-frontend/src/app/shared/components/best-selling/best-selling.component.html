@@ -27,7 +27,7 @@
       <!-- Each slide -->
       <div *ngFor="let chunk of getProductChunks()"
         class="min-w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 flex-shrink-0 gap-4 px-2">
-        <div *ngFor="let product of chunk"
+        <div [routerLink]="['/product',product._id]" *ngFor="let product of chunk"
           class="w-3/4 p-4 relative mx-auto shadow-md rounded transform transition-transform duration-300 hover:-translate-y-2">
 
           <div class="w-full h-64 overflow-hidden rounded-lg">
@@ -39,9 +39,9 @@
 
           <div class="flex justify-between items-center mt-2">
             <h3 class="font-medium text-sm md:text-base mb-4">{{ product.name }}</h3>
-            <button (click)="toggleWishlist(product)"
+            <button (click)="$event.stopPropagation(); toggleWishlist(product)"
               class="cursor-pointer duration-200 flex items-center justify-center space-x-2">
-              <svg class="w-5 h-5" [class.fill-red-500]="isInWishlist" [class.text-red-500]="isInWishlist" fill="none"
+              <svg class="w-5 h-5" [class.fill-red-500]="favoriteService.isInWishList(product._id)" [class.text-red-500]="favoriteService.isInWishList(product._id)" fill="none"
                 stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                   d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

@@ -33,7 +33,7 @@ interface Product {
 export class BestSellingComponent implements OnInit {
   constructor(
     private productService: ProductsService,
-    private favoriteService: FavoriteService,
+    public favoriteService: FavoriteService,
     private alertService: AlertsService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) { }

@@ -5,27 +5,26 @@
       <p class="font-light text-sm w-[90%] py-3">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aliquam in
         repellat architecto quibusdam adipisci accusantium quis praesentium.</p>
       <div class="flex gap-2">
-        <a [routerLink]="'/facebook'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        <a href="https://www.facebook.com/omar.alsayed.640273">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
             stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
             <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3" />
           </svg>
         </a>
 
-        <a [routerLink]="'/instagram'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 4m0 4a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4z" />
-            <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-            <path d="M16.5 7.5l0 .01" />
+        <a href="https://www.linkedin.com/in/omaralsayed10/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 448 512">
+            <path
+              d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z" />
           </svg>
         </a>
-        <a [routerLink]="'/pinterest'">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-            stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 20l4 -9" />
-            <path d="M10.7 14c.437 1.263 1.43 2 2.55 2c2.071 0 3.75 -1.554 3.75 -4a5 5 0 1 0 -9.7 1.7" />
-            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+        <a href="https://github.com/OmarAlsayed10">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-github"
+            viewBox="0 0 16 16">
+            <path
+              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z" />
           </svg>
 
         </a>
@@ -61,7 +60,7 @@
     <div class="flex flex-col gap-3">
       <h4 class="font-medium">Help</h4>
       <ul class="flex flex-col gap-1 font-extralight text-sm w-[110px]">
-        <li class="cursor-pointer hover:underline">My Account</li>
+        <li [routerLink]="'/profile'" class="cursor-pointer hover:underline">My Account</li>
         <li class="cursor-pointer hover:underline">Privacy</li>
         <li class="cursor-pointer hover:underline">
           <a [routerLink]="'/contactus'">Contact us</a>
@@ -70,6 +69,6 @@
     </div>
   </div>
   <div class="text-center mt-10 text-xs text-gray-500">
-    © 2025 Furnterra. All rights reserved to Omar Alsayed.
+    © 2025 Furnterra. All rights reserved to <a href="https://www.linkedin.com/in/omaralsayed10/" class="cursor-pointer font-bold underline">Omar Alsayed.</a>
   </div>
 </footer>

@@ -3,99 +3,85 @@
 
     <div class="flex flex-col gap-3 h-full">
 
-      <div class="bg-gray-100 p-4 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px] flex-1">
+      <div *ngIf="primaryCategories[0]" [routerLink]="['/collections',primaryCategories[0]]"
+        class="bg-gray-100 cursor-pointer p-4 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px] flex-1">
         <div>
-          <h2 class="text-lg font-semibold text-gray-900">Sofa Sets</h2>
-          <p class="text-sm text-gray-700">250 products</p>
+          <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[0]}}</h2>
         </div>
         <picture class="block mt-4">
-          <source srcset="assets/images/sofa.webp" type="image/webp" />
-          <source srcset="assets/images/sofa.png" type="image/png" />
-          <img src="assets/images/sofa.png" alt="Sofa" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[0]]" [alt]="primaryCategories[0]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
       </div>
 
-      <div class="bg-red-100 p-4 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px] flex-1">
+      <div *ngIf="primaryCategories[1]" [routerLink]="['/collections',primaryCategories[1]]"
+        class="bg-red-100 cursor-pointer p-4 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px] flex-1">
         <div>
-          <h2 class="text-lg font-semibold text-gray-900">Sideboards</h2>
-          <p class="text-sm text-gray-700">250 products</p>
+          <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[1]}}</h2>
         </div>
         <picture class="block mt-4">
-          <source srcset="assets/images/sideboard.webp" type="image/webp" />
-          <source srcset="assets/images/sideboard.png" type="image/png" />
-          <img src="assets/images/sideboard.png" alt="Sideboard" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[1]]" [alt]="primaryCategories[1]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
       </div>
     </div>
 
     <div class="h-full">
-      <div class="bg-yellow-100 rounded-lg p-4 shadow-md flex flex-col justify-between h-full min-h-[430px]">
+      <div *ngIf="primaryCategories[2]" [routerLink]="['/collections',primaryCategories[2]]"
+        class="bg-yellow-100 cursor-pointer rounded-lg p-4 shadow-md flex flex-col justify-between h-full min-h-[430px]">
         <div>
-          <h2 class="text-lg font-semibold text-gray-900">Special Chairs</h2>
-          <p class="text-sm text-gray-700">250 products</p>
+          <h2 class="text-lg font-semibold text-gray-900">{{primaryCategories[2]}}</h2>
         </div>
         <picture class="block mt-4">
-          <source srcset="assets/images/chair.webp" type="image/webp" />
-          <source srcset="assets/images/chair.png" type="image/png" />
-          <img src="assets/images/chair.png" alt="Chair" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[2]]" [alt]="primaryCategories[2]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
       </div>
     </div>
 
     <div class="grid grid-cols-2 gap-3 h-full">
 
-      <div class="bg-orange-100 p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
+      <div *ngIf="primaryCategories[3]" [routerLink]="['/collections',primaryCategories[3]]"
+        class="bg-orange-100 cursor-pointer p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
         <picture class="block">
-          <source srcset="assets/images/lighting.webp" type="image/webp" />
-          <source srcset="assets/images/lighting.png" type="image/png" />
-          <img src="assets/images/lighting.png" alt="Lighting" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[3]]" [alt]="primaryCategories[3]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
         <div>
-          <h2 class="text-sm font-semibold">Lightings</h2>
-          <p class="text-xs text-gray-700">250 products</p>
+          <h2 class="text-sm font-semibold">{{primaryCategories[3]}}</h2>
         </div>
       </div>
 
-      <div class="bg-gray-300 p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
+      <div *ngIf="primaryCategories[4]" [routerLink]="['/collections',primaryCategories[4]]"
+        class="bg-gray-300 p-3  cursor-pointer rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
         <picture class="block">
-          <source srcset="assets/images/clock.webp" type="image/webp" />
-          <source srcset="assets/images/clock.png" type="image/png" />
-          <img src="assets/images/clock.png" alt="Clock" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[4]]" [alt]="primaryCategories[4]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
         <div>
-          <h2 class="text-sm font-semibold">Clocks</h2>
-          <p class="text-xs text-gray-700">250 products</p>
+          <h2 class="text-sm font-semibold">{{primaryCategories[4]}}</h2>
         </div>
       </div>
 
-      <div class="bg-cyan-200 p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
+      <div *ngIf="primaryCategories[5]" [routerLink]="['/collections',primaryCategories[5]]"
+        class="bg-cyan-200 cursor-pointer p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
         <picture class="block">
-          <source srcset="assets/images/flower.webp" type="image/webp" />
-          <source srcset="assets/images/flower.png" type="image/png" />
-          <img src="assets/images/flower.png" alt="Flower Jar" loading="lazy" draggable="false"
-            class="mx-auto w-full max-w-[300px] h-auto object-contain" />
+          <img [src]="categoryImages[primaryCategories[5]]" [alt]="primaryCategories[5]" loading="lazy"
+            draggable="false" class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
         <div>
-          <h2 class="text-sm font-semibold">Flower Jars</h2>
-          <p class="text-xs text-gray-700">250 products</p>
+          <h2 class="text-sm font-semibold">{{primaryCategories[5]}}</h2>
         </div>
       </div>
 
-      <div class="bg-emerald-200 p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
+      <div [routerLink]="'/products'"
+        class="bg-emerald-200 cursor-pointer p-3 rounded-lg shadow-md flex flex-col justify-between h-full min-h-[200px]">
         <picture class="block">
-          <source srcset="assets/images/house-accessories.webp" type="image/webp" />
-          <source srcset="assets/images/house-accessories.png" type="image/png" />
           <img src="assets/images/house-accessories.png" alt="Home Accessories" loading="lazy" draggable="false"
             class="mx-auto w-full max-w-[300px] h-auto object-contain" />
         </picture>
         <div>
           <h2 class="text-sm font-semibold">Others</h2>
-          <p class="text-xs text-gray-700">250 products</p>
         </div>
       </div>
     </div>

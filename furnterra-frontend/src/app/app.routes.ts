@@ -4,6 +4,7 @@ import { publicGuard } from './shared/guards/public.guard';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { formDeactivateGuard } from './shared/guards/form-deactivate.guard';
 import { CartGuard } from './shared/guards/cart.guard';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,11 @@ export const routes: Routes = [
     path: 'about',
     loadComponent: () =>
       import('./pages/about/about.component').then((m) => m.AboutComponent),
+  },
+  {
+    path:"profile/:id",
+    canActivate:[AuthGuard],
+    component:ProfileComponent
   },
 
   {

@@ -24,7 +24,6 @@ export class ProductsComponent implements OnInit {
       this.categories = res
       res.forEach(category => {
         this.productservice.getByCategory(category).subscribe((res) => {
-          console.log(res.items)
           if (res.items.length > 0 && res.items[0].images && res.items[0].images.length > 0) {
             this.categoryImages[category] = res.items[0].images[0]
           }
