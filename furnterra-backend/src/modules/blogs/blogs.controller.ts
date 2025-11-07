@@ -54,7 +54,7 @@ export class BlogsController {
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
   uploadImage(@UploadedFile() file: Express.Multer.File) {
-    return { imageUrl: `./upload/blogs/${file.filename}` };
+    return { imageUrl: `/upload/blogs/${file.filename}` };
   }
 
   @Get(':id')
