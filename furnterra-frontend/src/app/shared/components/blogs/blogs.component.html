@@ -17,7 +17,7 @@
        <article *ngFor="let blog of relatedBlog" class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden">
         <div class="relative h-60">
          <picture>
-          <img [src]="blog.image"  alt="Blog-Image" loading="lazy" draggable="false"
+          <img [src]="blog.images && blog.images[0]"  alt="Blog-Image" loading="lazy" draggable="false"
             class="mx-auto w-full h-full object-cover" />
         </picture>
           <div

@@ -29,15 +29,15 @@ export class BlogsComponent implements OnInit {
       this.blogs = res.items
       this.totalPages = res.pagination.totalPages
       this.currentPage = res.pagination.page
-
+      // console.log(this.blogs)
     })
   }
 
-  goToPage(page:number){
+  goToPage(page: number) {
     this.loadBlogs(page)
   }
 
-  onSearchChange(){
+  onSearchChange() {
     this.loadBlogs(1)
   }
 

@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { BlogDto } from './blogs.dto';
 import { searchQuery } from '../products/searchQuery';
 import { paginate } from 'src/common/utils/pagination.util';
+import { transformImages } from 'src/common/utils/imageUpload.util';
 
 @Injectable()
 export class BlogsService {
@@ -15,7 +16,10 @@ export class BlogsService {
   }
 
   async getBlog(id: string) {
-    return await this.blogModel.findById(id);
+    const result = await this.blogModel.findById(id);
+    if (result && result.images) {
+      return transformImages(result)
+    }
   }
 
 
@@ -33,13 +37,17 @@ export class BlogsService {
 
     const result = await paginate(this.blogModel, page, limit, filter);
 
+    if (result.items && result.items.length) {
+      result.items = transformImages(result.items)
+    }
+
     return {
       items: result.items,
       pagination: {
-        totalBlogs:result.pagination.allItems,
-        page:result.pagination.page,
-        limit:result.pagination.limit,
-        totalPages:result.pagination.totalPages
+        totalBlogs: result.pagination.allItems,
+        page: result.pagination.page,
+        limit: result.pagination.limit,
+        totalPages: result.pagination.totalPages
       }
     }
 

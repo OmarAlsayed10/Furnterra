@@ -27,7 +27,7 @@
       class="bg-white rounded-lg shadow hover:shadow-lg transition overflow-hidden relative">
       <div class="relative h-60">
         <picture>
-          <img [src]="blog.image" alt="Blog-Image" loading="lazy" draggable="false"
+          <img [src]="blog.images && blog.images[0]" alt="Blog-Image" loading="lazy" draggable="false"
             class="mx-auto w-full h-full object-cover" />
         </picture>
         <div
@@ -60,7 +60,7 @@
       </div>
 
       <div class="mt-5">
-        <img [src]="selectedBlog.image" alt="Blog Image" class="w-full h-40 object-cover rounded" />
+        <img [src]="selectedBlog.images && selectedBlog.images[0]" alt="Blog Image" class="w-full h-40 object-cover rounded" />
       </div>
 
       <form [formGroup]="editForm" (ngSubmit)="updateBlog()" class="flex flex-col flex-grow justify-between">
@@ -72,8 +72,8 @@
           </div>
 
           <div>
-            <label>Image URL</label>
-            <input type="file" accept="image/*" formControlName="image[0]"
+            <label>Image</label>
+            <input type="file" accept="image/*"
               class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:bg-yellow-500 file:text-white hover:file:bg-yellow-600" />
           </div>
 

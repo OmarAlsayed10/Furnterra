@@ -83,6 +83,6 @@ export class ProductsController {
   }
 
   uploadImage(@UploadedFile() file: Express.Multer.File) {
-    return { imageUrl: `./upload/products/${file.filename}` };
+    return { imageUrl: `/upload/products/${file.filename}` };
   }
 }

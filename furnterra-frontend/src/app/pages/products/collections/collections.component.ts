@@ -35,6 +35,7 @@ export class CollectionsComponent implements OnInit {
       this.products = res.items;
       this.totalPages = res.pagination.totalPages;
       this.currentPage = res.pagination.page;
+      console.log(this.products)
     });
   }
 

@@ -9,7 +9,7 @@ interface Blog {
   _id?: string;
   name: string;
   content?: string;
-  image?: string[];
+  images?: string[];
 }
 
 @Component({

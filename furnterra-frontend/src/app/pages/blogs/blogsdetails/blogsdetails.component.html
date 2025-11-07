@@ -21,9 +21,9 @@
                 </div>
             </header>
 
-            <picture *ngIf="blog.image">
-                <source [srcset]="blog.image[0]" type="image/webp" />
-                <img [src]="blog.image[0]" loading="eager" draggable="false"
+            <picture *ngIf="blog.images">
+                <source [srcset]="blog.images[0]" type="image/webp" />
+                <img [src]="blog.images[0]" loading="eager" draggable="false"
                     class="w-full rounded-lg object-top h-[30%]" />
             </picture>
 
@@ -49,7 +49,7 @@
                 <div class="flex flex-col gap-6">
                     <article *ngFor="let related of relatedBlogs" [routerLink]="['/blogs',related._id]"
                         class="flex items-center gap-4 cursor-pointer hover:text-orange-500 transition-colors text-gray-900">
-                        <img [src]="related.image" [alt]="related.name" class="w-14 h-14 object-cover rounded-lg">
+                        <img [src]="related.images" [alt]="related.name" class="w-14 h-14 object-cover rounded-lg">
                         <div>
                             <h4 class="font-medium text-sm leading-tight mb-1">
                                 <a>{{related.name}}</a>

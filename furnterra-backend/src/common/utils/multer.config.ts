@@ -15,7 +15,7 @@ export function multerOptions(folder:string){
 
         limits:{files:MAX_SIZE},
         fileFilter:(req:Request,file:Express.Multer.File,cb:any)=>{
-            const allowed = /jpg|jpeg|png/
+            const allowed = /(jpg|jpeg|png|webp)/
             const ext = extname(file.originalname).toLowerCase()
             if(!allowed.test(ext)){
                 return cb(new BadRequestException('Only images are allowed'),false)

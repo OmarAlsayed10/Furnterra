@@ -1,12 +1,13 @@
-import { IsString } from "class-validator";
+import { IsArray, IsOptional, IsString } from "class-validator";
 
-export class BlogDto{
+export class BlogDto {
     @IsString()
-    title:string
-
-    @IsString()
-    content:string
+    name: string
 
     @IsString()
-    image:string
+    content: string
+
+    @IsArray()
+    @IsOptional()
+    images?: string[];
 }

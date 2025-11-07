@@ -43,7 +43,7 @@ export class addBlogComponent implements OnInit {
     this.blogForm = this.fb.group({
       name: ['', Validators.required],
       content: ['', Validators.required],
-      image: ['', Validators.required],
+      images: ['', Validators.required],
     });
   }
 
@@ -59,7 +59,7 @@ export class addBlogComponent implements OnInit {
 
   onImageChanges(url: string[]) {
     this.uploadImages = url;
-    this.blogForm.patchValue({ image: this.uploadImages });
+    this.blogForm.patchValue({ images: this.uploadImages });
   }
 
   onSubmit() {

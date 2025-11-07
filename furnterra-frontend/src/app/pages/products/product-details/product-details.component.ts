@@ -60,6 +60,7 @@ export class ProductDetailsComponent implements OnInit,OnDestroy {
         this.selectedImage = this.product.images?.[0] || '';
         this.wishListSub = this.favoriteService.favoriteItem$.subscribe((items)=>{
           this.isInWishlist = items.some(i=>i.product._id === this.product._id)
+          console.log(this.product)
         })
       });
     }

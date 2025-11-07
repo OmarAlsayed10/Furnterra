@@ -5,6 +5,7 @@ import { Model } from 'mongoose';
 import { ProductDto } from './dto/product.dto';
 import { searchQuery } from './searchQuery';
 import { paginate } from 'src/common/utils/pagination.util';
+import { transformImages } from 'src/common/utils/imageUpload.util';
 
 @Injectable()
 export class ProductsService {
@@ -50,10 +51,14 @@ export class ProductsService {
 
     const result = await paginate(this.ProductModel, page, limit, filter, sortObj);
 
+    if (result.items && result.items.length) {
+      transformImages(result.items)
+    }
+
     return {
       items: result.items,
       pagination: {
-        totalBlogs: result.pagination.allItems,
+        allItems: result.pagination.allItems,
         page: result.pagination.page,
         limit: result.pagination.limit,
         totalPages: result.pagination.totalPages
@@ -67,8 +72,19 @@ export class ProductsService {
   }
 
   async findByCategory(category: string) {
-
-    return paginate(this.ProductModel, 1, 15, { category })
+    const result = await paginate(this.ProductModel, 1, 15, { category })
+    if (result.items && result.items?.length) {
+      result.items = transformImages(result.items)
+    }
+    return {
+      items: result.items,
+      pagination: {
+        allItems: result.pagination.allItems,
+        page: result.pagination.page,
+        limit: result.pagination.limit,
+        totalPages: result.pagination.totalPages
+      }
+    }
   }
 
   async deleteProduct(id: string) {
@@ -77,14 +93,10 @@ export class ProductsService {
 
   async findOne(id: string) {
     const product = await this.ProductModel.findById(id)
-    if(product && product.images){
-      product.images = product.images.map(img=>{
-        if(img.startsWith("http"))
-          return img;
-        return `http://localhost:3000/${img.replace('./','')}`
-      })
+    if (product && product.images) {
+      return transformImages(product)
     }
-    return product 
+    return product
   }
 }
 

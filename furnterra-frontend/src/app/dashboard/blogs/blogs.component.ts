@@ -38,7 +38,7 @@ export class BlogsComponent implements OnInit {
     this.editForm = this.fb.group({
       name: ["", Validators.required],
       content: ["", Validators.required],
-      image: ["", Validators.required],
+      images: ["", Validators.required],
     })
   }
 
@@ -63,7 +63,7 @@ export class BlogsComponent implements OnInit {
     this.editForm.patchValue({
       name: blog.name,
       content: blog.content,
-      image: blog.image
+      images: blog.images
 
     })
   }
