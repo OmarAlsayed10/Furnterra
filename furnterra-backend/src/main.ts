@@ -15,6 +15,8 @@ async function bootstrap() {
     }
   });
 
+  app.setGlobalPrefix("api")
+
   if (process.env.NODE_ENV !== "production") {
     app.useStaticAssets(join(__dirname, '..', 'upload'), {
       prefix: '/upload/'
