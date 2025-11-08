@@ -7,23 +7,25 @@ let cachedApp;
 async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
-    
-    const { AppModule } = require('./furnterra-backend/dist/src/app.module');
-    
+
+    const appModulePath = path.join(process.cwd(), 'furnterra-backend/dist/src/app.module');
+    console.log('Looking for AppModule at:', appModulePath);
+
+    const { AppModule } = require(appModulePath);
     const app = await NestFactory.create(
       AppModule,
       new ExpressAdapter(expressApp),
-      { 
+      {
         logger: ['error', 'warn', 'log']
       }
     );
-    
+
     app.enableCors({
       origin: true,
       credentials: true
     });
-    
-    
+
+
     await app.init();
     cachedApp = expressApp;
   }
@@ -37,7 +39,7 @@ module.exports = async (req, res) => {
     return app(req, res);
   } catch (error) {
     console.error('Serverless function error:', error);
-    return res.status(500).json({ 
+    return res.status(500).json({
       error: 'Internal Server Error',
       message: error.message,
       stack: error.stack

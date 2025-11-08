@@ -2,11 +2,18 @@
   "version": 2,
   "builds": [
     {
+      "src": "furnterra-backend/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**", "node_modules/**"]
+      }
+    },
+    {
       "src": "api/index.js",
       "use": "@vercel/node",
       "config": {
         "includeFiles": [
-          "furnterra-backend/dist/**"
+          "../furnterra-backend/dist/**"
         ]
       }
     },
