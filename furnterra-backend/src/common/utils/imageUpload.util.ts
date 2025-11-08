@@ -1,33 +1,22 @@
-export const transformImageUrl = (imageUrl: string, baseUrl: string = 'http://localhost:3000'): string => {
-    if (!imageUrl) return ""
-    if (imageUrl.startsWith("http"))
-        return imageUrl
-
-    const path = imageUrl.replace('./', '')
-    const pathWithSlash = path.startsWith('/') ? path : `/${path}`
-    return `${baseUrl}${pathWithSlash}`
+export const transformImageUrl = (imageUrl: string): string => {
+    if (!imageUrl) return "";
+    return imageUrl;
 }
 
-export function transformImages(item: any, baseUrl: string = 'http://localhost:3000') {
+export function transformImages(item: any) {
     if (Array.isArray(item)) {
-        return item.map(item => {
-            return transformSingleImageUrl(item, baseUrl)
-        })
+        return item.map(item => transformSingleImageUrl(item))
     }
-    return transformSingleImageUrl(item, baseUrl)
+    return transformSingleImageUrl(item)
 }
 
-const transformSingleImageUrl = (item: any, baseUrl: string) => {
-    // Normalize legacy `image` field to `images`
+const transformSingleImageUrl = (item: any) => {
     if (item?.image?.length && !item?.images?.length) {
-        item.images = item.image.map((img: string) => transformImageUrl(img, baseUrl));
+        item.images = item.image.map((img: string) => transformImageUrl(img));
     }
 
-    // Transform `images` to absolute URLs
     if (item?.images?.length) {
-        item.images = item.images.map((img: string) =>
-            transformImageUrl(img, baseUrl)
-        );
+        item.images = item.images.map((img: string) => transformImageUrl(img));
     }
     return item;
 }

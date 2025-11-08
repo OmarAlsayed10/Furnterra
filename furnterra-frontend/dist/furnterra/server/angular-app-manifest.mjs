@@ -8,67 +8,205 @@ export default {
   {
     "renderMode": 2,
     "preload": [
-      "chunk-K3UZWEOG.js"
+      "chunk-ZPLJX43X.js",
+      "chunk-NZB6S3G3.js",
+      "chunk-G5M4WYT4.js",
+      "chunk-VU7AZSRT.js"
     ],
     "route": "/"
   },
   {
     "renderMode": 2,
     "preload": [
-      "chunk-MFUVLFRF.js"
+      "chunk-LLGWULHK.js"
     ],
     "route": "/about"
   },
   {
-    "renderMode": 2,
-    "preload": [
-      "chunk-63RQLHR6.js",
-      "chunk-RQMTRMLF.js"
-    ],
-    "route": "/login"
+    "renderMode": 0,
+    "route": "/profile/*"
   },
   {
-    "renderMode": 2,
+    "renderMode": 0,
     "preload": [
-      "chunk-5UQP4AG2.js",
-      "chunk-RQMTRMLF.js"
-    ],
-    "route": "/register"
-  },
-  {
-    "renderMode": 2,
-    "preload": [
-      "chunk-QN6TYKSY.js",
-      "chunk-RQMTRMLF.js"
-    ],
-    "route": "/verify-otp"
-  },
-  {
-    "renderMode": 2,
-    "preload": [
-      "chunk-2KWYLYHX.js"
+      "chunk-UB3ODWIV.js",
+      "chunk-VU7AZSRT.js"
     ],
     "route": "/products"
   },
   {
-    "renderMode": 2,
+    "renderMode": 0,
     "preload": [
-      "chunk-5EK4LR66.js"
+      "chunk-KPK7T5LA.js",
+      "chunk-KOCEYG54.js",
+      "chunk-VU7AZSRT.js"
+    ],
+    "route": "/products/*"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-KPK7T5LA.js",
+      "chunk-KOCEYG54.js",
+      "chunk-VU7AZSRT.js"
+    ],
+    "route": "/collections/*"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-LVW36GV7.js",
+      "chunk-VU7AZSRT.js"
+    ],
+    "route": "/product/*"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-4K7TXHNH.js"
+    ],
+    "route": "/login"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-6DD7ID4R.js"
+    ],
+    "route": "/register"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-KQVMMF5B.js"
+    ],
+    "route": "/verify-otp"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-AURKZRDL.js",
+      "chunk-NZB6S3G3.js",
+      "chunk-G5M4WYT4.js",
+      "chunk-KOCEYG54.js"
     ],
     "route": "/blogs"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-FNOUVXSL.js",
+      "chunk-NZB6S3G3.js",
+      "chunk-G5M4WYT4.js"
+    ],
+    "route": "/blogs/*"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-BSTIVNFB.js"
+    ],
+    "route": "/contactus"
+  },
+  {
+    "renderMode": 0,
+    "redirectTo": "/checkout/address",
+    "route": "/checkout"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-6SOJRKQY.js",
+      "chunk-6YLNHS6D.js"
+    ],
+    "route": "/checkout/address"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-WIF5OQLX.js",
+      "chunk-6YLNHS6D.js"
+    ],
+    "route": "/checkout/payment"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-Q2QWZNL3.js",
+      "chunk-6YLNHS6D.js"
+    ],
+    "route": "/checkout/showorder"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "redirectTo": "/dashboard/home",
+    "route": "/dashboard"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/home"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/admins"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/addadmin"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/blogs"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/products"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/settings"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/addproducts"
+  },
+  {
+    "renderMode": 0,
+    "preload": [
+      "chunk-XB4ECP3U.js"
+    ],
+    "route": "/dashboard/addblogs"
   }
 ],
   entryPointToBrowserMapping: undefined,
   assets: {
-    'index.csr.html': {size: 7458, hash: 'a821fd5476d97c3f04cf727c87f082c675403d2f1b0095b152dc1cac1ac367ba', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
-    'index.server.html': {size: 1304, hash: 'c956fe333bc8cc580d2e4bd714202960b387385cc9c3703a01e6ccece66087b1', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
-    'about/index.html': {size: 14760, hash: '9d7b9b00be431fd683878538095bbbb943563b211cf4e5a5a133663dfcf2cd46', text: () => import('./assets-chunks/about_index_html.mjs').then(m => m.default)},
-    'register/index.html': {size: 17981, hash: '29814f941124a56dfc51abd5e735cd512cb2fe0057dea034b76a69ebfa924d31', text: () => import('./assets-chunks/register_index_html.mjs').then(m => m.default)},
-    'index.html': {size: 33139, hash: 'f9c081ddd6d982fc26a01b146a0e5da00fed5fe553e098ecca45268d5e07c85c', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
-    'products/index.html': {size: 14769, hash: '8d2b1250cc99f3a1492d90cfb009f6dbe9e36b5fa8791e6f3ce9e4de60b8360a', text: () => import('./assets-chunks/products_index_html.mjs').then(m => m.default)},
-    'login/index.html': {size: 18163, hash: '3b7bdc34fe76b437e6056a29d8352aad2e1c9b1e9753c9558e97e790e4aa6442', text: () => import('./assets-chunks/login_index_html.mjs').then(m => m.default)},
-    'blogs/index.html': {size: 14760, hash: 'b19cad973e26ab6096221e3a04abc002f6ce22cc645d916b739bdf84a56438cd', text: () => import('./assets-chunks/blogs_index_html.mjs').then(m => m.default)},
-    'verify-otp/index.html': {size: 17981, hash: '92d8155557d03ee043b2b1d6368174e2a8745f12c3357b52cc868edd3dc7f5e3', text: () => import('./assets-chunks/verify-otp_index_html.mjs').then(m => m.default)},
-    'styles-7U6OHT7T.css': {size: 23504, hash: '1CH2lMRruzg', text: () => import('./assets-chunks/styles-7U6OHT7T_css.mjs').then(m => m.default)}
+    'index.csr.html': {size: 28385, hash: 'dbe32799daba07280ecca35046b473be9c992fe93c16900d022ef110f0039b77', text: () => import('./assets-chunks/index_csr_html.mjs').then(m => m.default)},
+    'index.server.html': {size: 17843, hash: '4355a4812576ee2cdb1990f0212c3b3ba2172d41c9b843616e849e277aeaae34', text: () => import('./assets-chunks/index_server_html.mjs').then(m => m.default)},
+    'about/index.html': {size: 56362, hash: 'cc7f9766e83064e4e445b0c07ddcf2c9b6075a6fb9d536e56f4e7f221f19e4cd', text: () => import('./assets-chunks/about_index_html.mjs').then(m => m.default)},
+    'index.html': {size: 53266, hash: '0d346e024367a5fb39fdbfd7a5e862c67ee3f435bd4c7bd135bdb74da2823916', text: () => import('./assets-chunks/index_html.mjs').then(m => m.default)},
+    'styles-UWX3HDVO.css': {size: 84368, hash: 'wfRAVNst1ww', text: () => import('./assets-chunks/styles-UWX3HDVO_css.mjs').then(m => m.default)}
   },
 };

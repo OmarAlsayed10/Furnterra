@@ -10,12 +10,14 @@ import { OrdersModule } from './modules/orders/orders.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { AdminService } from './modules/admin/admin.service';
 import { UsersController } from './modules/users/users.controller';
+import { SupabaseStorageModule } from './modules/supabase-storage/supabase-storage.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    SupabaseStorageModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({

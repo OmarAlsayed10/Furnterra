@@ -1,11 +1,6 @@
 {
   "routes": {
     "/": {},
-    "/about": {},
-    "/blogs": {},
-    "/login": {},
-    "/products": {},
-    "/register": {},
-    "/verify-otp": {}
+    "/about": {}
   }
 }
