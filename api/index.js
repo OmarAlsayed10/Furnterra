@@ -1,6 +1,7 @@
 const { NestFactory } = require('@nestjs/core');
 const { ExpressAdapter } = require('@nestjs/platform-express');
 const express = require('express');
+const path = require("path")
 
 let cachedApp;
 
@@ -8,10 +9,10 @@ async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
 
-    const appModulePath = path.join(process.cwd(), 'furnterra-backend/dist/src/app.module');
-    console.log('Looking for AppModule at:', appModulePath);
+    const backendPath = path.join(__dirname, '../furnterra-backend/dist/src/app.module');
+    console.log('Loading AppModule from:', backendPath);
+    const { AppModule } = require(backendPath);
 
-    const { AppModule } = require(appModulePath);
     const app = await NestFactory.create(
       AppModule,
       new ExpressAdapter(expressApp),
