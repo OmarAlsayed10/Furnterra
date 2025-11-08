@@ -20,7 +20,13 @@
     },
     {
       "src": "/(.*)",
-      "dest": "furnterra-frontend/dist/furnterra/browser/index.html"
+      "dest": "furnterra-frontend/$1"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/((?!api).*)",
+      "destination": "/index.html"
     }
   ]
 }
