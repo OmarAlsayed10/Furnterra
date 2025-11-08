@@ -1,13 +1,15 @@
-import { NestFactory } from '@nestjs/core';
-import { ExpressAdapter } from '@nestjs/platform-express';
-import { AppModule } from 'src/app.module';
-import express from 'express';
+const { NestFactory } = require('@nestjs/core');
+const { ExpressAdapter } = require('@nestjs/platform-express');
+const express = require('express');
 
 const server = express();
-let app: any;
+let app;
 
 async function bootstrap() {
   if (!app) {
+    // Import from the compiled dist folder
+    const { AppModule } = require('../dist/app.module');
+    
     app = await NestFactory.create(
       AppModule,
       new ExpressAdapter(server),
@@ -20,7 +22,7 @@ async function bootstrap() {
   return server;
 }
 
-export default async (req: any, res: any) => {
+module.exports = async (req, res) => {
   const server = await bootstrap();
   server(req, res);
 };

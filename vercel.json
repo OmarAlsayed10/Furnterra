@@ -19,12 +19,8 @@
       "dest": "furnterra-backend/api/index.js"
     },
     {
-      "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|ico|json|woff|woff2|ttf|eot|mjs))",
-      "dest": "furnterra-frontend/dist/furnterra/browser/$1"
-    },
-    {
       "src": "/(.*)",
-      "dest": "furnterra-frontend/dist/furnterra/browser/index.html"
+      "dest": "furnterra-frontend/$1"
     }
   ]
 }
