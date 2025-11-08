@@ -4,8 +4,8 @@ import { Product, ProductDocument } from './products.schema';
 import { Model } from 'mongoose';
 import { ProductDto } from './dto/product.dto';
 import { searchQuery } from './searchQuery';
-import { paginate } from 'src/common/utils/pagination.util';
-import { transformImages } from 'src/common/utils/imageUpload.util';
+import { paginate } from '../../common/utils/pagination.util';
+import { transformImages } from '../../common/utils/imageUpload.util';
 
 @Injectable()
 export class ProductsService {

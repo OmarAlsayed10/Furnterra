@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './user.schema';
 import { Model } from 'mongoose';
 import { searchQuery } from '../products/searchQuery';
-import { paginate } from 'src/common/utils/pagination.util';
+import { paginate } from '../../common/utils/pagination.util';
 
 @Injectable()
 export class UsersService {

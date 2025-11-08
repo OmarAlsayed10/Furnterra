@@ -9,9 +9,9 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { OrdersService } from './orders.service';
-import { Role } from 'src/common/decorators/role.decorator';
+import { Role } from '../../common/decorators/role.decorator';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from 'src/common/guards/roles.guard';
+import { RolesGuard } from '../../common/guards/roles.guard';
 import { createOrderDto } from './dto/create-order.dto';
 import { Request } from 'express';
 

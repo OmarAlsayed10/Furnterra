@@ -1,8 +1,8 @@
 import { Controller, Get, Param, Query, UseGuards } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { AuthGuard } from '@nestjs/passport';
-import { Role } from 'src/common/decorators/role.decorator';
-import { parseNestedQuery } from 'src/common/utils/query.parse';
+import { Role } from '../../common/decorators/role.decorator';
+import { parseNestedQuery } from '../../common/utils/query.parse';
 
 @Controller('users')
 export class UsersController {

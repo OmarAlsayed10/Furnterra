@@ -11,12 +11,12 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { RolesGuard } from 'src/common/guards/roles.guard';
-import { Role } from 'src/common/decorators/role.decorator';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { Role } from '../../common/decorators/role.decorator';
 import { ProductDto } from './dto/product.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { Express } from 'express';
-import { parseNestedQuery } from 'src/common/utils/query.parse';
+import { parseNestedQuery } from '../../common/utils/query.parse';
 
 @Controller('products')
 export class ProductsController {

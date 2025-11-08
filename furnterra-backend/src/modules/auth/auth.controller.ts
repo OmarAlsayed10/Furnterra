@@ -14,7 +14,7 @@ import { loginDto } from './dto/login.dto';
 import { AuthGuard } from '@nestjs/passport';
 import { verifyOtopDto } from './dto/verifyOTP.dto';
 import { Request } from 'express';
-import { Role } from 'src/common/decorators/role.decorator';
+import { Role } from '../../common/decorators/role.decorator';
 import { AdminPermission } from '../admin/admin.schema';
 
 @Controller('auth')

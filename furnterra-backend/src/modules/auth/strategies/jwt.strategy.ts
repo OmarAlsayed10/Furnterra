@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Strategy, ExtractJwt } from 'passport-jwt';
-import { UsersService } from 'src/modules/users/users.service';
+import { UsersService } from '../../../modules/users/users.service';
 
 interface jwtPayload{
     email:string

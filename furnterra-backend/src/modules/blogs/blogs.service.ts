@@ -4,8 +4,8 @@ import { Blog, BlogDocument } from './blogs.schema';
 import { Model } from 'mongoose';
 import { BlogDto } from './blogs.dto';
 import { searchQuery } from '../products/searchQuery';
-import { paginate } from 'src/common/utils/pagination.util';
-import { transformImages } from 'src/common/utils/imageUpload.util';
+import { paginate } from '../../common/utils/pagination.util';
+import { transformImages } from '../../common/utils/imageUpload.util';
 
 @Injectable()
 export class BlogsService {

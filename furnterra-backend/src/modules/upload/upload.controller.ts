@@ -7,9 +7,9 @@ import {
 } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Role } from 'src/common/decorators/role.decorator';
-import { RolesGuard } from 'src/common/guards/roles.guard';
-import { multerOptions } from 'src/common/utils/multer.config';
+import { Role } from '../../common/decorators/role.decorator';
+import { RolesGuard } from '../../common/guards/roles.guard';
+import { multerOptions } from '../../common/utils/multer.config';
 import { SupabaseStorageService } from '../supabase-storage/supabase-storage.service'; 
 
 @Controller('upload')

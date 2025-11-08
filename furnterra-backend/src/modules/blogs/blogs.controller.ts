@@ -12,15 +12,15 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { BlogsService } from './blogs.service';
-import { Role } from 'src/common/decorators/role.decorator';
+import { Role } from '../../common/decorators/role.decorator';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from 'src/common/guards/roles.guard';
+import { RolesGuard } from '../../common/guards/roles.guard';
 import { BlogDto } from './blogs.dto';
-import { Permission } from 'src/common/decorators/permissions.decorator';
+import { Permission } from '../../common/decorators/permissions.decorator';
 import { AdminPermission } from '../admin/admin.schema';
-import { PermissionsGuard } from 'src/common/guards/permissions.guard';
+import { PermissionsGuard } from '../../common/guards/permissions.guard';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { parseNestedQuery } from 'src/common/utils/query.parse';
+import { parseNestedQuery } from '../../common/utils/query.parse';
 
 @Controller('blogs')
 export class BlogsController {
