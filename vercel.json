@@ -2,11 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "backend/dist/main.js",
+      "src": "furnterra-backend/dist/main.js",
       "use": "@vercel/node"
     },
     {
-      "src": "frontend/package.json",
+      "src": "furnterra-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
         "distDir": "dist"
@@ -16,11 +16,11 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "backend/dist/main.js"
+      "dest": "furnterra-backend/dist/main.js"
     },
     {
       "src": "/(.*)",
-      "dest": "frontend/$1"
+      "dest": "furnterra-frontend/$1"
     }
   ]
 }
