@@ -7,8 +7,7 @@ let cachedApp;
 async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
-    
-    const { AppModule } = require('../dist/app.module');
+    const { AppModule } = require('../furnterra-backend/dist/app.module');
     
     const app = await NestFactory.create(
       AppModule,
@@ -36,7 +35,8 @@ module.exports = async (req, res) => {
     console.error('Serverless function error:', error);
     return res.status(500).json({ 
       error: 'Internal Server Error',
-      message: error.message 
+      message: error.message,
+      stack: error.stack
     });
   }
 };

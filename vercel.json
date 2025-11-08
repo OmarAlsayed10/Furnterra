@@ -1,35 +1,10 @@
 {
-  "buildCommand": "npm run build:backend && npm run build:frontend",
+  "version": 2,
+  "buildCommand": "cd furnterra-backend && npm install && npm run build && cd ../furnterra-frontend && npm install && npm run build",
   "installCommand": "npm install",
-  "framework": null,
   "functions": {
-    "furnterra-backend/api/*.js": {
-      "runtime": "nodejs20.x",
-      "memory": 1024,
-      "maxDuration": 30
+    "api/**/*.js": {
+      "runtime": "nodejs20.x"
     }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/api/$1"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api",
-      "dest": "furnterra-backend/api/index.js"
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "furnterra-backend/api/index.js"
-    },
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "furnterra-frontend/dist/furnterra/browser/index.html"
-    }
-  ]
+  }
 }
