@@ -8,7 +8,6 @@ async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
     
-    // Import the compiled AppModule
     const { AppModule } = require('./furnterra-backend/dist/src/app.module');
     
     const app = await NestFactory.create(
