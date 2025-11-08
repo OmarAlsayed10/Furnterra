@@ -9,7 +9,7 @@ async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
 
-    const backendPath = path.join(__dirname, '../furnterra-backend/dist/src/app.module');
+    const backendPath = path.join(__dirname, '../furnterra-backend/dist/app.module');
     console.log('Loading AppModule from:', backendPath);
     const { AppModule } = require(backendPath);
 
