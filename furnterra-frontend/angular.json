@@ -24,12 +24,17 @@
               {
                 "glob": "**/*",
                 "input": "public"
+              },
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
               }
             ],
             "styles": [
-                "node_modules/quill/dist/quill.snow.css",
-                "node_modules/slick-carousel/slick/slick.css",
-                "node_modules/slick-carousel/slick/slick-theme.css",
+              "node_modules/quill/dist/quill.snow.css",
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css",
               "src/styles.css"
             ],
             "scripts": [],
@@ -93,7 +98,7 @@
               }
             ],
             "styles": [
-             "src/styles.css"
+              "src/styles.css"
             ],
             "scripts": []
           }
