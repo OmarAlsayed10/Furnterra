@@ -40,12 +40,15 @@ async function createApp() {
         logger: ['error', 'warn', 'log']
       }
     );
-    
+
     app.enableCors({
       origin: true,
       credentials: true
     });
-    
+
+    app.setGlobalPrefix("api")
+
+
     await app.init();
     cachedApp = expressApp;
   }
