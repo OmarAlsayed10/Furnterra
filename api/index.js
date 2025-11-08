@@ -8,20 +8,22 @@ async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
     
-    // Import from the built backend
-    const { AppModule } = require('./furnterra-backend/dist/app.module');
+    // Import the compiled AppModule
+    const { AppModule } = require('./furnterra-backend/dist/src/app.module');
     
     const app = await NestFactory.create(
       AppModule,
       new ExpressAdapter(expressApp),
       { 
-        logger: ['error', 'warn', 'log'],
-        cors: {
-          origin: true,
-          credentials: true
-        }
+        logger: ['error', 'warn', 'log']
       }
     );
+    
+    app.enableCors({
+      origin: true,
+      credentials: true
+    });
+    
     
     await app.init();
     cachedApp = expressApp;
@@ -31,6 +33,7 @@ async function bootstrap() {
 
 module.exports = async (req, res) => {
   try {
+    console.log('Request:', req.method, req.url);
     const app = await bootstrap();
     return app(req, res);
   } catch (error) {
@@ -38,7 +41,7 @@ module.exports = async (req, res) => {
     return res.status(500).json({ 
       error: 'Internal Server Error',
       message: error.message,
-      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      stack: error.stack
     });
   }
 };
