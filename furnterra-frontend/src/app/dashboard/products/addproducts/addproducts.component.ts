@@ -36,7 +36,7 @@ export class AddproductsComponent implements OnInit {
       discount: [''],
       brand: ['', Validators.required],
       category: ['', Validators.required],
-      images: ['', Validators.required],
+      images: [''],
       inStock: ['', Validators.required],
       stock: ['', Validators.required],
       sold: ['', Validators.required],
@@ -54,14 +54,21 @@ export class AddproductsComponent implements OnInit {
   }
 
   onImagesChanges(urls: string[]) {
+    console.log("onimagechanges upload image submit",this.uploadImages)
     this.uploadImages = urls;
-    this.form.patchValue({ image: this.uploadImages });
+    this.form.patchValue({ images: this.uploadImages });
   }
 
   onSubmit() {
+    console.log("upload image submit",this.uploadImages)
     if (this.form.invalid) {
       this.alert.show('Please fill out all required fields', 'error');
       this.form.markAllAsTouched();
+    }
+
+    if (this.uploadImages.length === 0) {
+      this.alert.show('Please upload at least one image', 'error');
+      return;
     }
 
     const dataToSend = {

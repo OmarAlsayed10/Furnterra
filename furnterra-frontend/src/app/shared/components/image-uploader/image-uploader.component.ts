@@ -48,9 +48,7 @@ export class ImageUploaderComponent {
         this.http.post<{imageUrl:string}>(`${this.API}/upload/${this.uploadType}`,formData)
         .toPromise()
         .then((res:any)=>{
-          const url = `${this.API}${res.imageUrl.startsWith('/') ? '' : '/'}${res.imageUrl.replace('./', '')}`;
-
-          this.uploadImages.push(url)
+          this.uploadImages.push(res.imageUrl)
         })
       )
     }
