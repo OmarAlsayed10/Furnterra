@@ -19,8 +19,16 @@
       "dest": "furnterra-backend/src/main.ts"
     },
     {
+      "src": "/assets/(.*)",
+      "dest": "/furnterra-frontend/assets/$1"
+    },
+    {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|ico|json|woff|woff2|ttf|eot))",
+      "dest": "/furnterra-frontend/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "furnterra-frontend/$1"
+      "dest": "/furnterra-frontend/index.html"
     }
   ]
 }
