@@ -4,14 +4,18 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { join } from 'path';
 
 async function bootstrap() {
-  const app = await NestFactory.create<NestExpressApplication>(AppModule,{cors:{
-    origin:"http://localhost:4200",
-    credentials:true
-  }});
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
+    cors: {
+      origin:
+        ["http://localhost:4200",
+          /\.vercel\.app$/,],
+      credentials: true
+    }
+  });
 
-   app.useStaticAssets(join(__dirname,'..','upload'),{
-    prefix:'/upload/'
-   })
+  app.useStaticAssets(join(__dirname, '..', 'upload'), {
+    prefix: '/upload/'
+  })
 
   await app.listen(process.env.PORT ?? 3000);
 }
