@@ -7,7 +7,9 @@ let cachedApp;
 async function bootstrap() {
   if (!cachedApp) {
     const expressApp = express();
-    const { AppModule } = require('../furnterra-backend/dist/app.module');
+    
+    // Import from the built backend
+    const { AppModule } = require('./furnterra-backend/dist/app.module');
     
     const app = await NestFactory.create(
       AppModule,
@@ -36,7 +38,7 @@ module.exports = async (req, res) => {
     return res.status(500).json({ 
       error: 'Internal Server Error',
       message: error.message,
-      stack: error.stack
+      stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
 };

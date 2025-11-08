@@ -1,10 +1,26 @@
 {
   "version": 2,
-  "buildCommand": "cd furnterra-backend && npm install && npm run build && cd ../furnterra-frontend && npm install && npm run build",
-  "installCommand": "npm install",
-  "functions": {
-    "api/**/*.js": {
-      "runtime": "nodejs20.x"
+  "builds": [
+    {
+      "src": "api/index.js",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "furnterra-frontend/package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/furnterra/browser"
+      }
     }
-  }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "/api/index.js"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "furnterra-frontend/$1"
+    }
+  ]
 }
