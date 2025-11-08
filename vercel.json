@@ -2,14 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "furnterra-backend/dist/main.js",
+      "src": "furnterra-backend/package.json",
       "use": "@vercel/node"
     },
     {
       "src": "furnterra-frontend/package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "dist"
+        "distDir": "dist/furnterra/browser"
       }
     }
   ],
@@ -20,7 +20,7 @@
     },
     {
       "src": "/(.*)",
-      "dest": "furnterra-frontend/$1"
+      "dest": "furnterra-frontend/dist/furnterra/browser/$1"
     }
   ]
 }
