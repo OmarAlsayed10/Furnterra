@@ -2,8 +2,11 @@
   "version": 2,
   "builds": [
     {
-      "src": "furnterra-backend/api/index.js",
-      "use": "@vercel/node"
+      "src": "furnterra-backend/package.json",
+      "use": "@vercel/node",
+      "config": {
+        "includeFiles": ["dist/**"]
+      }
     },
     {
       "src": "furnterra-frontend/package.json",
@@ -19,8 +22,12 @@
       "dest": "furnterra-backend/api/index.js"
     },
     {
+      "src": "/(.*\\.(js|css|png|jpg|jpeg|svg|ico|json|woff|woff2|ttf|eot|mjs|txt))",
+      "dest": "furnterra-frontend/dist/furnterra/browser/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "furnterra-frontend/$1"
+      "dest": "furnterra-frontend/dist/furnterra/browser/index.html"
     }
   ]
 }

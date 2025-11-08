@@ -6,17 +6,21 @@ import { join } from 'path';
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     cors: {
-      origin:
-        ["http://localhost:4200",
-          /\.vercel\.app$/,],
+      origin: true,
       credentials: true
     }
   });
 
-  app.useStaticAssets(join(__dirname, '..', 'upload'), {
-    prefix: '/upload/'
-  })
+
+  if (process.env.NODE_ENV !== "production") {
+    app.useStaticAssets(join(__dirname, '..', 'upload'), {
+      prefix: '/upload/'
+    })
+  }
 
   await app.listen(process.env.PORT ?? 3000);
 }
-bootstrap();
+
+if (require.main === module) {
+  bootstrap();
+}
